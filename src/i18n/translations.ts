@@ -1,0 +1,222 @@
+export type Language = "en" | "he";
+
+export const translations: Record<Language, Record<string, string>> = {
+  en: {
+    // Nav
+    "nav.services": "Services",
+    "nav.portfolio": "Portfolio",
+    "nav.pricing": "Pricing",
+    "nav.contact": "Contact",
+    "nav.bookCall": "Book a Call",
+
+    // Hero
+    "hero.title1": "We Build Your",
+    "hero.title2": "Web Story",
+    "hero.subtitle": "Stunning websites that captivate audiences, drive conversions, and tell your brand's unique story through exceptional design and cutting-edge technology.",
+    "hero.cta1": "Start Your Project",
+    "hero.cta2": "View Our Work",
+
+    // Services
+    "services.tag": "What We Do",
+    "services.title": "Services That Deliver Results",
+    "services.subtitle": "From concept to launch, we craft digital experiences that stand out.",
+    "services.design.title": "Web Design",
+    "services.design.desc": "Stunning, user-centered designs that captivate your audience and reflect your brand identity perfectly.",
+    "services.dev.title": "Development",
+    "services.dev.desc": "Clean, performant code built with modern technologies for fast, reliable, and scalable websites.",
+    "services.seo.title": "SEO & Growth",
+    "services.seo.desc": "Data-driven strategies to boost your visibility, organic traffic, and search engine rankings.",
+    "services.brand.title": "Branding",
+    "services.brand.desc": "Cohesive brand identities that communicate your values and make lasting impressions.",
+
+    // Stats
+    "stats.projects": "Projects Completed",
+    "stats.satisfaction": "Client Satisfaction",
+    "stats.years": "Years Experience",
+    "stats.clients": "Happy Clients",
+
+    // Portfolio
+    "portfolio.tag": "Our Work",
+    "portfolio.title": "Featured Projects",
+    "portfolio.subtitle": "A showcase of our finest work across various industries.",
+    "portfolio.all": "All",
+    "portfolio.ecommerce": "E-Commerce",
+    "portfolio.landing": "Landing Pages",
+    "portfolio.webapps": "Web Apps",
+    "portfolio.viewProject": "View Project",
+
+    // Testimonials
+    "testimonials.tag": "Testimonials",
+    "testimonials.title": "What Our Clients Say",
+    "testimonials.subtitle": "Don't just take our word for it — hear from the businesses we've helped grow.",
+
+    // Pricing
+    "pricing.tag": "Pricing",
+    "pricing.title": "Simple, Transparent Pricing",
+    "pricing.subtitle": "Choose the plan that fits your needs. No hidden fees, ever.",
+    "pricing.starter": "Starter",
+    "pricing.professional": "Professional",
+    "pricing.enterprise": "Enterprise",
+    "pricing.popular": "Most Popular",
+    "pricing.mo": "/project",
+    "pricing.cta": "Get Started",
+    "pricing.ctaPopular": "Start Now",
+    "pricing.ctaEnterprise": "Contact Us",
+    "pricing.starter.f1": "5-page responsive website",
+    "pricing.starter.f2": "Mobile-first design",
+    "pricing.starter.f3": "Basic SEO setup",
+    "pricing.starter.f4": "Contact form integration",
+    "pricing.starter.f5": "1 round of revisions",
+    "pricing.pro.f1": "Up to 15 pages",
+    "pricing.pro.f2": "Custom animations & interactions",
+    "pricing.pro.f3": "Advanced SEO optimization",
+    "pricing.pro.f4": "CMS integration",
+    "pricing.pro.f5": "E-commerce ready",
+    "pricing.pro.f6": "3 rounds of revisions",
+    "pricing.ent.f1": "Unlimited pages",
+    "pricing.ent.f2": "Full branding package",
+    "pricing.ent.f3": "Custom web application",
+    "pricing.ent.f4": "Priority support 24/7",
+    "pricing.ent.f5": "Performance optimization",
+    "pricing.ent.f6": "Unlimited revisions",
+
+    // Contact
+    "contact.tag": "Get In Touch",
+    "contact.title": "Let's Build Something Amazing",
+    "contact.subtitle": "Ready to start your project? Reach out and let's discuss your vision.",
+    "contact.name": "Your Name",
+    "contact.email": "Email Address",
+    "contact.message": "Tell us about your project",
+    "contact.send": "Send Message",
+    "contact.info.title": "Contact Info",
+    "contact.info.email": "hello@webstorey.com",
+    "contact.info.phone": "+1 (555) 123-4567",
+    "contact.info.address": "123 Creative St, Design City",
+    "contact.bookCall": "Book a Free Consultation",
+
+    // Footer
+    "footer.desc": "Crafting digital stories through beautiful, functional websites that drive results.",
+    "footer.quickLinks": "Quick Links",
+    "footer.services": "Services",
+    "footer.connect": "Connect",
+    "footer.newsletter": "Newsletter",
+    "footer.emailPlaceholder": "Your email",
+    "footer.subscribe": "Subscribe",
+    "footer.rights": "All rights reserved.",
+
+    // Accessibility
+    "a11y.title": "Accessibility",
+    "a11y.fontSize": "Font Size",
+    "a11y.highContrast": "High Contrast",
+    "a11y.reduceMotion": "Reduce Motion",
+  },
+  he: {
+    // Nav
+    "nav.services": "שירותים",
+    "nav.portfolio": "תיק עבודות",
+    "nav.pricing": "מחירים",
+    "nav.contact": "צור קשר",
+    "nav.bookCall": "קבע שיחה",
+
+    // Hero
+    "hero.title1": "אנחנו בונים את",
+    "hero.title2": "הסיפור הדיגיטלי שלך",
+    "hero.subtitle": "אתרים מרהיבים שמושכים קהלים, מניעים המרות ומספרים את הסיפור הייחודי של המותג שלך באמצעות עיצוב יוצא דופן וטכנולוגיה חדשנית.",
+    "hero.cta1": "התחל את הפרויקט שלך",
+    "hero.cta2": "צפה בעבודות שלנו",
+
+    // Services
+    "services.tag": "מה אנחנו עושים",
+    "services.title": "שירותים שמביאים תוצאות",
+    "services.subtitle": "מרעיון ועד השקה, אנחנו יוצרים חוויות דיגיטליות שבולטות.",
+    "services.design.title": "עיצוב אתרים",
+    "services.design.desc": "עיצובים מרהיבים וממוקדי משתמש שמושכים את הקהל שלך ומשקפים את זהות המותג שלך.",
+    "services.dev.title": "פיתוח",
+    "services.dev.desc": "קוד נקי וביצועי שנבנה עם טכנולוגיות מודרניות לאתרים מהירים, אמינים וניתנים להרחבה.",
+    "services.seo.title": "קידום ושיווק",
+    "services.seo.desc": "אסטרטגיות מבוססות נתונים להגברת הנראות, התנועה האורגנית ודירוג מנועי החיפוש.",
+    "services.brand.title": "מיתוג",
+    "services.brand.desc": "זהויות מותג קוהרנטיות שמתקשרות את הערכים שלך ויוצרות רושם מתמשך.",
+
+    // Stats
+    "stats.projects": "פרויקטים שהושלמו",
+    "stats.satisfaction": "שביעות רצון לקוחות",
+    "stats.years": "שנות ניסיון",
+    "stats.clients": "לקוחות מרוצים",
+
+    // Portfolio
+    "portfolio.tag": "העבודות שלנו",
+    "portfolio.title": "פרויקטים נבחרים",
+    "portfolio.subtitle": "תצוגה של העבודות הטובות ביותר שלנו במגוון תעשיות.",
+    "portfolio.all": "הכל",
+    "portfolio.ecommerce": "חנויות אונליין",
+    "portfolio.landing": "דפי נחיתה",
+    "portfolio.webapps": "אפליקציות ווב",
+    "portfolio.viewProject": "צפה בפרויקט",
+
+    // Testimonials
+    "testimonials.tag": "המלצות",
+    "testimonials.title": "מה הלקוחות שלנו אומרים",
+    "testimonials.subtitle": "אל תסתמכו רק על המילה שלנו — שמעו מהעסקים שעזרנו להם לצמוח.",
+
+    // Pricing
+    "pricing.tag": "מחירים",
+    "pricing.title": "מחירים פשוטים ושקופים",
+    "pricing.subtitle": "בחרו את התוכנית שמתאימה לצרכים שלכם. ללא עלויות נסתרות.",
+    "pricing.starter": "בסיסי",
+    "pricing.professional": "מקצועי",
+    "pricing.enterprise": "עסקי",
+    "pricing.popular": "הכי פופולרי",
+    "pricing.mo": "/לפרויקט",
+    "pricing.cta": "התחל עכשיו",
+    "pricing.ctaPopular": "בחר תוכנית",
+    "pricing.ctaEnterprise": "צור קשר",
+    "pricing.starter.f1": "אתר רספונסיבי עד 5 עמודים",
+    "pricing.starter.f2": "עיצוב מותאם למובייל",
+    "pricing.starter.f3": "הגדרת SEO בסיסית",
+    "pricing.starter.f4": "טופס יצירת קשר",
+    "pricing.starter.f5": "סבב תיקונים אחד",
+    "pricing.pro.f1": "עד 15 עמודים",
+    "pricing.pro.f2": "אנימציות ואינטראקציות מותאמות",
+    "pricing.pro.f3": "אופטימיזציית SEO מתקדמת",
+    "pricing.pro.f4": "אינטגרציית מערכת ניהול תוכן",
+    "pricing.pro.f5": "מוכן למסחר אלקטרוני",
+    "pricing.pro.f6": "3 סבבי תיקונים",
+    "pricing.ent.f1": "עמודים ללא הגבלה",
+    "pricing.ent.f2": "חבילת מיתוג מלאה",
+    "pricing.ent.f3": "אפליקציית ווב מותאמת",
+    "pricing.ent.f4": "תמיכה בעדיפות 24/7",
+    "pricing.ent.f5": "אופטימיזציית ביצועים",
+    "pricing.ent.f6": "תיקונים ללא הגבלה",
+
+    // Contact
+    "contact.tag": "צור קשר",
+    "contact.title": "בואו נבנה משהו מדהים",
+    "contact.subtitle": "מוכנים להתחיל את הפרויקט שלכם? פנו אלינו ונדון בחזון שלכם.",
+    "contact.name": "השם שלך",
+    "contact.email": "כתובת אימייל",
+    "contact.message": "ספרו לנו על הפרויקט שלכם",
+    "contact.send": "שלח הודעה",
+    "contact.info.title": "פרטי התקשרות",
+    "contact.info.email": "hello@webstorey.com",
+    "contact.info.phone": "+1 (555) 123-4567",
+    "contact.info.address": "רחוב הקריאייטיב 123, עיר העיצוב",
+    "contact.bookCall": "קבע ייעוץ חינם",
+
+    // Footer
+    "footer.desc": "יוצרים סיפורים דיגיטליים דרך אתרים יפים ופונקציונליים שמביאים תוצאות.",
+    "footer.quickLinks": "קישורים מהירים",
+    "footer.services": "שירותים",
+    "footer.connect": "התחברו",
+    "footer.newsletter": "ניוזלטר",
+    "footer.emailPlaceholder": "האימייל שלך",
+    "footer.subscribe": "הירשמו",
+    "footer.rights": "כל הזכויות שמורות.",
+
+    // Accessibility
+    "a11y.title": "נגישות",
+    "a11y.fontSize": "גודל גופן",
+    "a11y.highContrast": "ניגודיות גבוהה",
+    "a11y.reduceMotion": "הפחתת תנועה",
+  },
+};
