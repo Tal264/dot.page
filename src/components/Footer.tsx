@@ -23,9 +23,9 @@ const Footer = () => {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg gradient-bg flex items-center justify-center font-display font-bold text-sm text-primary-foreground">
-                W
-              </div>
+              <img src={logoImg} alt="WebStorey" className="w-8 h-8" />
+              <span className="font-display font-bold text-lg gradient-text">WebStorey</span>
+            </div>
               <span className="font-display font-bold text-lg gradient-text">WebStorey</span>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">{t("footer.desc")}</p>
