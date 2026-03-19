@@ -44,9 +44,7 @@ const Navbar = () => {
       <div className="container mx-auto flex items-center justify-between h-16 md:h-20 px-4">
         {/* Logo */}
         <a href="#" className="flex items-center gap-2 group" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-          <div className="w-9 h-9 rounded-lg gradient-bg flex items-center justify-center font-display font-bold text-lg text-primary-foreground group-hover:scale-110 transition-transform">
-            W
-          </div>
+          <img src={logoImg} alt="WebStorey" className="w-9 h-9 group-hover:scale-110 transition-transform" />
           <span className="font-display font-bold text-xl gradient-text">WebStorey</span>
         </a>
 
