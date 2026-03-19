@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useAccessibility } from "@/contexts/AccessibilityContext";
+import logoImg from "@/assets/logo.png";
 import { Menu, X, Globe, Accessibility, ChevronDown } from "lucide-react";
 import { Switch } from "@/components/ui/switch";
 
