@@ -1,4 +1,5 @@
 import { useLanguage } from "@/contexts/LanguageContext";
+import logoImg from "@/assets/logo.png";
 import { ArrowUp, Github, Twitter, Linkedin, Instagram } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
