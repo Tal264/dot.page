@@ -3,16 +3,22 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { ExternalLink } from "lucide-react";
+import portfolio1 from "@/assets/portfolio-1.jpg";
+import portfolio2 from "@/assets/portfolio-2.jpg";
+import portfolio3 from "@/assets/portfolio-3.jpg";
+import portfolio4 from "@/assets/portfolio-4.jpg";
+import portfolio5 from "@/assets/portfolio-5.jpg";
+import portfolio6 from "@/assets/portfolio-6.jpg";
 
 type Category = "all" | "ecommerce" | "landing" | "webapps";
 
 const projects = [
-  { id: 1, cat: "ecommerce" as const, title: "LuxeShop", desc: "Premium fashion e-commerce", color: "from-purple-600 to-pink-500" },
-  { id: 2, cat: "landing" as const, title: "GreenTech", desc: "SaaS landing page", color: "from-green-500 to-teal-500" },
-  { id: 3, cat: "webapps" as const, title: "TaskFlow", desc: "Project management app", color: "from-blue-500 to-indigo-600" },
-  { id: 4, cat: "ecommerce" as const, title: "FoodieBox", desc: "Meal kit subscription", color: "from-orange-400 to-red-500" },
-  { id: 5, cat: "landing" as const, title: "CryptoVault", desc: "Fintech landing page", color: "from-cyan-400 to-blue-500" },
-  { id: 6, cat: "webapps" as const, title: "HealthPulse", desc: "Fitness tracking dashboard", color: "from-pink-500 to-rose-500" },
+  { id: 1, cat: "ecommerce" as const, title: "LuxeShop", desc: "Premium fashion e-commerce", img: portfolio1 },
+  { id: 2, cat: "landing" as const, title: "GreenTech", desc: "SaaS landing page", img: portfolio2 },
+  { id: 3, cat: "webapps" as const, title: "TaskFlow", desc: "Project management app", img: portfolio3 },
+  { id: 4, cat: "ecommerce" as const, title: "FoodieBox", desc: "Meal kit subscription", img: portfolio4 },
+  { id: 5, cat: "landing" as const, title: "CryptoVault", desc: "Fintech landing page", img: portfolio5 },
+  { id: 6, cat: "webapps" as const, title: "HealthPulse", desc: "Fitness tracking dashboard", img: portfolio6 },
 ];
 
 const Portfolio = () => {
@@ -93,7 +99,14 @@ const Portfolio = () => {
                 transition={{ duration: 0.3 }}
                 className="group relative rounded-xl overflow-hidden border border-border bg-card hover-glow cursor-pointer"
               >
-                <div className={`h-48 bg-gradient-to-br ${project.color} relative`}>
+                <div className="h-48 relative overflow-hidden">
+                  <motion.img
+                    src={project.img}
+                    alt={project.title}
+                    className="w-full h-full object-cover"
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.6 }}
+                  />
                   <div className="absolute inset-0 bg-background/0 group-hover:bg-background/60 transition-colors duration-300 flex items-center justify-center">
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}

@@ -4,6 +4,7 @@ export const translations: Record<Language, Record<string, string>> = {
   en: {
     // Nav
     "nav.services": "Services",
+    "nav.about": "About",
     "nav.portfolio": "Portfolio",
     "nav.pricing": "Pricing",
     "nav.contact": "Contact",
@@ -15,6 +16,18 @@ export const translations: Record<Language, Record<string, string>> = {
     "hero.subtitle": "Stunning websites that captivate audiences, drive conversions, and tell your brand's unique story through exceptional design and cutting-edge technology.",
     "hero.cta1": "Start Your Project",
     "hero.cta2": "View Our Work",
+
+    // About
+    "about.tag": "About Us",
+    "about.title": "Crafting Digital Excellence",
+    "about.subtitle": "We're a passionate team of designers, developers, and strategists who believe every brand deserves a powerful digital presence.",
+    "about.story": "Founded with a vision to bridge the gap between stunning design and powerful technology, WebStorey has grown into a full-service digital agency that delivers results. We combine creativity with data-driven strategies to build websites that not only look amazing but also convert visitors into loyal customers.",
+    "about.mission.title": "Our Mission",
+    "about.mission.desc": "To empower businesses with beautiful, high-performing websites that tell their unique story and drive measurable growth.",
+    "about.vision.title": "Our Vision",
+    "about.vision.desc": "To be the leading creative digital agency that transforms how brands connect with their audiences online.",
+    "about.values.title": "Our Values",
+    "about.values.desc": "Innovation, transparency, and excellence guide every project we undertake. Your success is our success.",
 
     // Services
     "services.tag": "What We Do",
@@ -106,13 +119,24 @@ export const translations: Record<Language, Record<string, string>> = {
 
     // Accessibility
     "a11y.title": "Accessibility",
-    "a11y.fontSize": "Font Size",
+    "a11y.fontSize": "Large Text",
     "a11y.highContrast": "High Contrast",
     "a11y.reduceMotion": "Reduce Motion",
+    "a11y.dyslexiaFont": "Dyslexia Font",
+    "a11y.linkHighlight": "Highlight Links",
+    "a11y.lineSpacing": "Line Spacing",
+    "a11y.cursorLarge": "Large Cursor",
+    "a11y.saturation": "Saturation",
+    "a11y.reset": "Reset All",
+
+    // Theme
+    "theme.light": "Light",
+    "theme.dark": "Dark",
   },
   he: {
     // Nav
     "nav.services": "שירותים",
+    "nav.about": "אודות",
     "nav.portfolio": "תיק עבודות",
     "nav.pricing": "מחירים",
     "nav.contact": "צור קשר",
@@ -124,6 +148,18 @@ export const translations: Record<Language, Record<string, string>> = {
     "hero.subtitle": "אתרים מרהיבים שמושכים קהלים, מניעים המרות ומספרים את הסיפור הייחודי של המותג שלך באמצעות עיצוב יוצא דופן וטכנולוגיה חדשנית.",
     "hero.cta1": "התחל את הפרויקט שלך",
     "hero.cta2": "צפה בעבודות שלנו",
+
+    // About
+    "about.tag": "אודותינו",
+    "about.title": "יוצרים מצוינות דיגיטלית",
+    "about.subtitle": "אנחנו צוות נלהב של מעצבים, מפתחים ואסטרטגים שמאמינים שכל מותג ראוי לנוכחות דיגיטלית עוצמתית.",
+    "about.story": "WebStorey נוסדה מתוך חזון לגשר בין עיצוב מרהיב לטכנולוגיה חזקה, והפכה לסוכנות דיגיטלית מלאה שמביאה תוצאות. אנחנו משלבים יצירתיות עם אסטרטגיות מבוססות נתונים כדי לבנות אתרים שלא רק נראים מדהים אלא גם ממירים מבקרים ללקוחות נאמנים.",
+    "about.mission.title": "המשימה שלנו",
+    "about.mission.desc": "להעצים עסקים עם אתרים יפים ובעלי ביצועים גבוהים שמספרים את הסיפור הייחודי שלהם ומניעים צמיחה מדידה.",
+    "about.vision.title": "החזון שלנו",
+    "about.vision.desc": "להיות הסוכנות הדיגיטלית היצירתית המובילה שמשנה את האופן שבו מותגים מתחברים לקהלים שלהם באינטרנט.",
+    "about.values.title": "הערכים שלנו",
+    "about.values.desc": "חדשנות, שקיפות ומצוינות מנחים כל פרויקט שאנחנו לוקחים. ההצלחה שלכם היא ההצלחה שלנו.",
 
     // Services
     "services.tag": "מה אנחנו עושים",
@@ -215,8 +251,18 @@ export const translations: Record<Language, Record<string, string>> = {
 
     // Accessibility
     "a11y.title": "נגישות",
-    "a11y.fontSize": "גודל גופן",
+    "a11y.fontSize": "טקסט גדול",
     "a11y.highContrast": "ניגודיות גבוהה",
     "a11y.reduceMotion": "הפחתת תנועה",
+    "a11y.dyslexiaFont": "גופן דיסלקציה",
+    "a11y.linkHighlight": "הדגשת קישורים",
+    "a11y.lineSpacing": "ריווח שורות",
+    "a11y.cursorLarge": "סמן גדול",
+    "a11y.saturation": "רוויה",
+    "a11y.reset": "איפוס הכל",
+
+    // Theme
+    "theme.light": "בהיר",
+    "theme.dark": "כהה",
   },
 };

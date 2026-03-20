@@ -11,7 +11,7 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [lang, setLang] = useState<Language>("en");
+  const [lang, setLang] = useState<Language>("he");
   const isRTL = lang === "he";
 
   useEffect(() => {

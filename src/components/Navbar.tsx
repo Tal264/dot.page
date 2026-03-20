@@ -2,13 +2,25 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useAccessibility } from "@/contexts/AccessibilityContext";
+import { useTheme } from "@/contexts/ThemeContext";
 import logoImg from "@/assets/logo.png";
-import { Menu, X, Globe, Accessibility, ChevronDown } from "lucide-react";
+import { Menu, X, Globe, Accessibility, Sun, Moon, RotateCcw } from "lucide-react";
 import { Switch } from "@/components/ui/switch";
 
 const Navbar = () => {
   const { t, lang, setLang, isRTL } = useLanguage();
-  const { largeText, toggleLargeText, highContrast, toggleHighContrast, reduceMotion, toggleReduceMotion } = useAccessibility();
+  const {
+    largeText, toggleLargeText,
+    highContrast, toggleHighContrast,
+    reduceMotion, toggleReduceMotion,
+    dyslexiaFont, toggleDyslexiaFont,
+    linkHighlight, toggleLinkHighlight,
+    lineSpacing, toggleLineSpacing,
+    largeCursor, toggleLargeCursor,
+    highSaturation, toggleHighSaturation,
+    resetAll,
+  } = useAccessibility();
+  const { theme, toggleTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [a11yOpen, setA11yOpen] = useState(false);
@@ -20,6 +32,7 @@ const Navbar = () => {
   }, []);
 
   const links = [
+    { href: "#about", label: t("nav.about") },
     { href: "#services", label: t("nav.services") },
     { href: "#portfolio", label: t("nav.portfolio") },
     { href: "#pricing", label: t("nav.pricing") },
@@ -31,6 +44,17 @@ const Navbar = () => {
     const el = document.querySelector(href);
     el?.scrollIntoView({ behavior: "smooth" });
   };
+
+  const a11yOptions = [
+    { label: t("a11y.fontSize"), checked: largeText, toggle: toggleLargeText },
+    { label: t("a11y.highContrast"), checked: highContrast, toggle: toggleHighContrast },
+    { label: t("a11y.reduceMotion"), checked: reduceMotion, toggle: toggleReduceMotion },
+    { label: t("a11y.dyslexiaFont"), checked: dyslexiaFont, toggle: toggleDyslexiaFont },
+    { label: t("a11y.linkHighlight"), checked: linkHighlight, toggle: toggleLinkHighlight },
+    { label: t("a11y.lineSpacing"), checked: lineSpacing, toggle: toggleLineSpacing },
+    { label: t("a11y.cursorLarge"), checked: largeCursor, toggle: toggleLargeCursor },
+    { label: t("a11y.saturation"), checked: highSaturation, toggle: toggleHighSaturation },
+  ];
 
   return (
     <motion.nav
@@ -63,6 +87,15 @@ const Navbar = () => {
 
         {/* Right side controls */}
         <div className="flex items-center gap-2">
+          {/* Theme toggle */}
+          <button
+            onClick={toggleTheme}
+            className="p-2 rounded-full border border-border hover:border-primary/50 transition-colors text-muted-foreground hover:text-foreground"
+            aria-label="Toggle theme"
+          >
+            {theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+          </button>
+
           {/* Language toggle */}
           <button
             onClick={() => setLang(lang === "en" ? "he" : "en")}
@@ -88,22 +121,25 @@ const Navbar = () => {
                   initial={{ opacity: 0, y: -10, scale: 0.95 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: -10, scale: 0.95 }}
-                  className={`absolute top-12 ${isRTL ? "left-0" : "right-0"} w-64 p-4 rounded-lg bg-card border border-border shadow-xl`}
+                  className={`absolute top-12 ${isRTL ? "left-0" : "right-0"} w-72 p-4 rounded-lg bg-card border border-border shadow-xl max-h-[70vh] overflow-y-auto`}
                 >
-                  <h3 className="font-display font-semibold text-sm mb-3">{t("a11y.title")}</h3>
+                  <div className="flex items-center justify-between mb-3">
+                    <h3 className="font-display font-semibold text-sm">{t("a11y.title")}</h3>
+                    <button
+                      onClick={resetAll}
+                      className="flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      <RotateCcw className="w-3 h-3" />
+                      {t("a11y.reset")}
+                    </button>
+                  </div>
                   <div className="space-y-3">
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm text-muted-foreground">{t("a11y.fontSize")}</span>
-                      <Switch checked={largeText} onCheckedChange={toggleLargeText} />
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm text-muted-foreground">{t("a11y.highContrast")}</span>
-                      <Switch checked={highContrast} onCheckedChange={toggleHighContrast} />
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm text-muted-foreground">{t("a11y.reduceMotion")}</span>
-                      <Switch checked={reduceMotion} onCheckedChange={toggleReduceMotion} />
-                    </div>
+                    {a11yOptions.map((opt) => (
+                      <div key={opt.label} className="flex items-center justify-between">
+                        <span className="text-sm text-muted-foreground">{opt.label}</span>
+                        <Switch checked={opt.checked} onCheckedChange={opt.toggle} />
+                      </div>
+                    ))}
                   </div>
                 </motion.div>
               )}
