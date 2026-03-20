@@ -16,7 +16,7 @@ const services = [
 ];
 
 const Services = () => {
-  const { t } = useLanguage();
+  const { t, isRTL } = useLanguage();
   const { ref, isVisible } = useScrollAnimation();
 
   return (
