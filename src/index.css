@@ -1,11 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=OpenDyslexic:wght@400;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-  :root {
+  :root,
+  .dark {
     --background: 230 25% 7%;
     --foreground: 210 40% 98%;
 
@@ -47,6 +48,49 @@
     --sidebar-accent: 230 15% 18%;
     --sidebar-accent-foreground: 210 40% 98%;
     --sidebar-border: 230 15% 20%;
+    --sidebar-ring: 262 83% 58%;
+  }
+
+  .light {
+    --background: 0 0% 98%;
+    --foreground: 230 25% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 230 25% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 230 25% 10%;
+
+    --primary: 262 83% 58%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 199 89% 48%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 220 14% 92%;
+    --muted-foreground: 220 10% 40%;
+
+    --accent: 174 72% 40%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 13% 85%;
+    --input: 220 13% 85%;
+    --ring: 262 83% 58%;
+
+    --gradient-purple: 262 83% 58%;
+    --gradient-blue: 217 91% 60%;
+    --gradient-cyan: 174 72% 46%;
+
+    --sidebar-background: 0 0% 96%;
+    --sidebar-foreground: 230 25% 10%;
+    --sidebar-primary: 262 83% 58%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 14% 92%;
+    --sidebar-accent-foreground: 230 25% 10%;
+    --sidebar-border: 220 13% 85%;
     --sidebar-ring: 262 83% 58%;
   }
 }
@@ -125,6 +169,12 @@
   --border: 0 0% 60%;
 }
 
+.light.high-contrast {
+  --foreground: 0 0% 0%;
+  --muted-foreground: 0 0% 15%;
+  --border: 0 0% 30%;
+}
+
 /* Accessibility: large text */
 .large-text {
   font-size: 118%;
@@ -137,4 +187,36 @@
   animation-duration: 0.01ms !important;
   animation-iteration-count: 1 !important;
   transition-duration: 0.01ms !important;
+}
+
+/* Dyslexia-friendly font */
+.dyslexia-font,
+.dyslexia-font * {
+  font-family: 'OpenDyslexic', 'Comic Sans MS', sans-serif !important;
+}
+
+/* Highlight links */
+.link-highlight a {
+  outline: 2px solid hsl(var(--primary)) !important;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Line spacing */
+.line-spacing {
+  line-height: 2 !important;
+}
+.line-spacing * {
+  line-height: 2 !important;
+}
+
+/* Large cursor */
+.large-cursor,
+.large-cursor * {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M4 4l20 8-8 4-4 8z' fill='%23fff' stroke='%23000' stroke-width='2'/%3E%3C/svg%3E") 4 4, auto !important;
+}
+
+/* High saturation */
+.high-saturation {
+  filter: saturate(1.5);
 }

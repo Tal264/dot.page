@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { ArrowRight, ArrowLeft, Sparkles } from "lucide-react";
+import heroBg from "@/assets/hero-bg.jpg";
 
 const Hero = () => {
   const { t, isRTL } = useLanguage();
@@ -8,6 +9,18 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden section-padding pt-32">
+      {/* Background image with parallax feel */}
+      <div className="absolute inset-0">
+        <motion.div
+          animate={{ scale: [1, 1.05, 1] }}
+          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+          className="w-full h-full"
+        >
+          <img src={heroBg} alt="" className="w-full h-full object-cover" />
+        </motion.div>
+        <div className="absolute inset-0 bg-background/70" />
+      </div>
+
       {/* Animated background shapes */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
@@ -21,12 +34,6 @@ const Hero = () => {
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
           className="absolute bottom-20 right-[10%] w-96 h-96 rounded-full opacity-15"
           style={{ background: "radial-gradient(circle, hsl(199 89% 48% / 0.4), transparent)" }}
-        />
-        <motion.div
-          animate={{ y: [0, -15, 0], x: [0, 10, 0] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-10"
-          style={{ background: "radial-gradient(circle, hsl(174 72% 56% / 0.3), transparent)" }}
         />
         {/* Grid pattern */}
         <div
@@ -44,7 +51,7 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-card/50 mb-8">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-card/50 mb-8 backdrop-blur-sm">
             <Sparkles className="w-4 h-4 text-primary" />
             <span className="text-sm text-muted-foreground">WebStorey — Premium Web Solutions</span>
           </div>
@@ -85,7 +92,7 @@ const Hero = () => {
           </a>
           <a
             href="#portfolio"
-            className="px-8 py-3.5 rounded-full border border-border font-semibold hover:border-primary/50 hover:bg-card/50 transition-all flex items-center gap-2"
+            className="px-8 py-3.5 rounded-full border border-border font-semibold hover:border-primary/50 hover:bg-card/50 transition-all flex items-center gap-2 backdrop-blur-sm"
           >
             {t("hero.cta2")}
           </a>

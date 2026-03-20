@@ -26,8 +26,6 @@ const Footer = () => {
               <img src={logoImg} alt="WebStorey" className="w-8 h-8" />
               <span className="font-display font-bold text-lg gradient-text">WebStorey</span>
             </div>
-              <span className="font-display font-bold text-lg gradient-text">WebStorey</span>
-            </div>
             <p className="text-sm text-muted-foreground leading-relaxed">{t("footer.desc")}</p>
           </div>
 
@@ -35,6 +33,7 @@ const Footer = () => {
           <div>
             <h4 className="font-display font-semibold mb-4">{t("footer.quickLinks")}</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
+              <li><a href="#about" className="hover:text-foreground transition-colors">{t("nav.about")}</a></li>
               <li><a href="#services" className="hover:text-foreground transition-colors">{t("nav.services")}</a></li>
               <li><a href="#portfolio" className="hover:text-foreground transition-colors">{t("nav.portfolio")}</a></li>
               <li><a href="#pricing" className="hover:text-foreground transition-colors">{t("nav.pricing")}</a></li>
