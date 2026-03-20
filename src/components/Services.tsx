@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Palette, Code2, TrendingUp, Stamp } from "lucide-react";
 import serviceDesign from "@/assets/service-design.jpg";
 import serviceDev from "@/assets/service-dev.jpg";
