@@ -67,7 +67,7 @@ const Services = () => {
                   transition={{ duration: 0.5 }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-card via-card/60 to-transparent" />
-                <div className={`absolute top-4 ${document.documentElement.dir === 'rtl' ? 'right-4' : 'left-4'} w-12 h-12 rounded-lg bg-gradient-to-br ${service.color} flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg`}>
+                <div className={`absolute top-4 ${isRTL ? 'right-4' : 'left-4'} w-12 h-12 rounded-lg bg-gradient-to-br ${service.color} flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg`}>
                   <service.icon className="w-6 h-6 text-primary-foreground" />
                 </div>
               </div>
