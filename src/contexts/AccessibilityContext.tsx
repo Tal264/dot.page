@@ -17,6 +17,18 @@ interface A11yContextType {
   toggleLargeCursor: () => void;
   highSaturation: boolean;
   toggleHighSaturation: () => void;
+  invertColors: boolean;
+  toggleInvertColors: () => void;
+  monochrome: boolean;
+  toggleMonochrome: () => void;
+  textAlign: "default" | "left" | "center" | "right";
+  setTextAlign: (v: "default" | "left" | "center" | "right") => void;
+  wordSpacing: boolean;
+  toggleWordSpacing: () => void;
+  focusHighlight: boolean;
+  toggleFocusHighlight: () => void;
+  hideImages: boolean;
+  toggleHideImages: () => void;
   resetAll: () => void;
 }
 
@@ -31,6 +43,12 @@ export const AccessibilityProvider: React.FC<{ children: React.ReactNode }> = ({
   const [lineSpacing, setLineSpacing] = useState(false);
   const [largeCursor, setLargeCursor] = useState(false);
   const [highSaturation, setHighSaturation] = useState(false);
+  const [invertColors, setInvertColors] = useState(false);
+  const [monochrome, setMonochrome] = useState(false);
+  const [textAlign, setTextAlign] = useState<"default" | "left" | "center" | "right">("default");
+  const [wordSpacing, setWordSpacing] = useState(false);
+  const [focusHighlight, setFocusHighlight] = useState(false);
+  const [hideImages, setHideImages] = useState(false);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -42,7 +60,18 @@ export const AccessibilityProvider: React.FC<{ children: React.ReactNode }> = ({
     root.classList.toggle("line-spacing", lineSpacing);
     root.classList.toggle("large-cursor", largeCursor);
     root.classList.toggle("high-saturation", highSaturation);
-  }, [largeText, highContrast, reduceMotion, dyslexiaFont, linkHighlight, lineSpacing, largeCursor, highSaturation]);
+    root.classList.toggle("invert-colors", invertColors);
+    root.classList.toggle("monochrome", monochrome);
+    root.classList.toggle("word-spacing", wordSpacing);
+    root.classList.toggle("focus-highlight", focusHighlight);
+    root.classList.toggle("hide-images", hideImages);
+
+    // Text alignment
+    root.classList.remove("text-align-left", "text-align-center", "text-align-right");
+    if (textAlign !== "default") {
+      root.classList.add(`text-align-${textAlign}`);
+    }
+  }, [largeText, highContrast, reduceMotion, dyslexiaFont, linkHighlight, lineSpacing, largeCursor, highSaturation, invertColors, monochrome, textAlign, wordSpacing, focusHighlight, hideImages]);
 
   const resetAll = () => {
     setLargeText(false);
@@ -53,6 +82,12 @@ export const AccessibilityProvider: React.FC<{ children: React.ReactNode }> = ({
     setLineSpacing(false);
     setLargeCursor(false);
     setHighSaturation(false);
+    setInvertColors(false);
+    setMonochrome(false);
+    setTextAlign("default");
+    setWordSpacing(false);
+    setFocusHighlight(false);
+    setHideImages(false);
   };
 
   return (
@@ -66,6 +101,12 @@ export const AccessibilityProvider: React.FC<{ children: React.ReactNode }> = ({
         lineSpacing, toggleLineSpacing: () => setLineSpacing((v) => !v),
         largeCursor, toggleLargeCursor: () => setLargeCursor((v) => !v),
         highSaturation, toggleHighSaturation: () => setHighSaturation((v) => !v),
+        invertColors, toggleInvertColors: () => setInvertColors((v) => !v),
+        monochrome, toggleMonochrome: () => setMonochrome((v) => !v),
+        textAlign, setTextAlign,
+        wordSpacing, toggleWordSpacing: () => setWordSpacing((v) => !v),
+        focusHighlight, toggleFocusHighlight: () => setFocusHighlight((v) => !v),
+        hideImages, toggleHideImages: () => setHideImages((v) => !v),
         resetAll,
       }}
     >
