@@ -127,6 +127,16 @@ export const translations: Record<Language, Record<string, string>> = {
     "a11y.lineSpacing": "Line Spacing",
     "a11y.cursorLarge": "Large Cursor",
     "a11y.saturation": "Saturation",
+    "a11y.invertColors": "Invert Colors",
+    "a11y.monochrome": "Monochrome",
+    "a11y.textAlign": "Text Alignment",
+    "a11y.textAlignDefault": "Default",
+    "a11y.textAlignLeft": "Left",
+    "a11y.textAlignCenter": "Center",
+    "a11y.textAlignRight": "Right",
+    "a11y.wordSpacing": "Word Spacing",
+    "a11y.focusHighlight": "Focus Highlight",
+    "a11y.hideImages": "Hide Images",
     "a11y.reset": "Reset All",
 
     // Theme
