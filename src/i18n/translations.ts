@@ -269,6 +269,16 @@ export const translations: Record<Language, Record<string, string>> = {
     "a11y.lineSpacing": "ריווח שורות",
     "a11y.cursorLarge": "סמן גדול",
     "a11y.saturation": "רוויה",
+    "a11y.invertColors": "היפוך צבעים",
+    "a11y.monochrome": "מונוכרום",
+    "a11y.textAlign": "יישור טקסט",
+    "a11y.textAlignDefault": "ברירת מחדל",
+    "a11y.textAlignLeft": "שמאל",
+    "a11y.textAlignCenter": "מרכז",
+    "a11y.textAlignRight": "ימין",
+    "a11y.wordSpacing": "ריווח מילים",
+    "a11y.focusHighlight": "הדגשת מיקוד",
+    "a11y.hideImages": "הסתרת תמונות",
     "a11y.reset": "איפוס הכל",
 
     // Theme

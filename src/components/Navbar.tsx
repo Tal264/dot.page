@@ -18,6 +18,12 @@ const Navbar = () => {
     lineSpacing, toggleLineSpacing,
     largeCursor, toggleLargeCursor,
     highSaturation, toggleHighSaturation,
+    invertColors, toggleInvertColors,
+    monochrome, toggleMonochrome,
+    textAlign, setTextAlign,
+    wordSpacing, toggleWordSpacing,
+    focusHighlight, toggleFocusHighlight,
+    hideImages, toggleHideImages,
     resetAll,
   } = useAccessibility();
   const { theme, toggleTheme } = useTheme();
@@ -45,7 +51,7 @@ const Navbar = () => {
     el?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const a11yOptions = [
+  const a11yToggles = [
     { label: t("a11y.fontSize"), checked: largeText, toggle: toggleLargeText },
     { label: t("a11y.highContrast"), checked: highContrast, toggle: toggleHighContrast },
     { label: t("a11y.reduceMotion"), checked: reduceMotion, toggle: toggleReduceMotion },
@@ -54,6 +60,18 @@ const Navbar = () => {
     { label: t("a11y.lineSpacing"), checked: lineSpacing, toggle: toggleLineSpacing },
     { label: t("a11y.cursorLarge"), checked: largeCursor, toggle: toggleLargeCursor },
     { label: t("a11y.saturation"), checked: highSaturation, toggle: toggleHighSaturation },
+    { label: t("a11y.invertColors"), checked: invertColors, toggle: toggleInvertColors },
+    { label: t("a11y.monochrome"), checked: monochrome, toggle: toggleMonochrome },
+    { label: t("a11y.wordSpacing"), checked: wordSpacing, toggle: toggleWordSpacing },
+    { label: t("a11y.focusHighlight"), checked: focusHighlight, toggle: toggleFocusHighlight },
+    { label: t("a11y.hideImages"), checked: hideImages, toggle: toggleHideImages },
+  ];
+
+  const alignOptions: Array<{ value: "default" | "left" | "center" | "right"; label: string }> = [
+    { value: "default", label: t("a11y.textAlignDefault") },
+    { value: "left", label: t("a11y.textAlignLeft") },
+    { value: "center", label: t("a11y.textAlignCenter") },
+    { value: "right", label: t("a11y.textAlignRight") },
   ];
 
   return (
@@ -121,9 +139,9 @@ const Navbar = () => {
                   initial={{ opacity: 0, y: -10, scale: 0.95 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: -10, scale: 0.95 }}
-                  className={`absolute top-12 ${isRTL ? "left-0" : "right-0"} w-72 p-4 rounded-lg bg-card border border-border shadow-xl max-h-[70vh] overflow-y-auto`}
+                  className={`absolute top-12 ${isRTL ? "left-0" : "right-0"} w-80 p-4 rounded-lg bg-card border border-border shadow-xl max-h-[75vh] overflow-y-auto`}
                 >
-                  <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center justify-between mb-4">
                     <h3 className="font-display font-semibold text-sm">{t("a11y.title")}</h3>
                     <button
                       onClick={resetAll}
@@ -133,13 +151,35 @@ const Navbar = () => {
                       {t("a11y.reset")}
                     </button>
                   </div>
-                  <div className="space-y-3">
-                    {a11yOptions.map((opt) => (
+
+                  {/* Toggle switches */}
+                  <div className="space-y-3 mb-4">
+                    {a11yToggles.map((opt) => (
                       <div key={opt.label} className="flex items-center justify-between">
                         <span className="text-sm text-muted-foreground">{opt.label}</span>
                         <Switch checked={opt.checked} onCheckedChange={opt.toggle} />
                       </div>
                     ))}
+                  </div>
+
+                  {/* Text alignment */}
+                  <div className="border-t border-border pt-3">
+                    <span className="text-sm text-muted-foreground block mb-2">{t("a11y.textAlign")}</span>
+                    <div className="flex gap-1.5">
+                      {alignOptions.map((opt) => (
+                        <button
+                          key={opt.value}
+                          onClick={() => setTextAlign(opt.value)}
+                          className={`flex-1 px-2 py-1.5 rounded text-xs font-medium transition-colors ${
+                            textAlign === opt.value
+                              ? "gradient-bg text-primary-foreground"
+                              : "bg-muted text-muted-foreground hover:text-foreground"
+                          }`}
+                        >
+                          {opt.label}
+                        </button>
+                      ))}
+                    </div>
                   </div>
                 </motion.div>
               )}
