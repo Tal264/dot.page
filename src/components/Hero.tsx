@@ -18,7 +18,7 @@ const Hero = () => {
         >
           <img src={heroBg} alt="" className="w-full h-full object-cover" />
         </motion.div>
-        <div className="absolute inset-0 bg-background/60" />
+        <div className="absolute inset-0 bg-background/70" />
       </div>
 
       {/* Floating decorative shapes — moving in parallel */}
