@@ -127,6 +127,16 @@ export const translations: Record<Language, Record<string, string>> = {
     "a11y.lineSpacing": "Line Spacing",
     "a11y.cursorLarge": "Large Cursor",
     "a11y.saturation": "Saturation",
+    "a11y.invertColors": "Invert Colors",
+    "a11y.monochrome": "Monochrome",
+    "a11y.textAlign": "Text Alignment",
+    "a11y.textAlignDefault": "Default",
+    "a11y.textAlignLeft": "Left",
+    "a11y.textAlignCenter": "Center",
+    "a11y.textAlignRight": "Right",
+    "a11y.wordSpacing": "Word Spacing",
+    "a11y.focusHighlight": "Focus Highlight",
+    "a11y.hideImages": "Hide Images",
     "a11y.reset": "Reset All",
 
     // Theme
@@ -259,6 +269,16 @@ export const translations: Record<Language, Record<string, string>> = {
     "a11y.lineSpacing": "ריווח שורות",
     "a11y.cursorLarge": "סמן גדול",
     "a11y.saturation": "רוויה",
+    "a11y.invertColors": "היפוך צבעים",
+    "a11y.monochrome": "מונוכרום",
+    "a11y.textAlign": "יישור טקסט",
+    "a11y.textAlignDefault": "ברירת מחדל",
+    "a11y.textAlignLeft": "שמאל",
+    "a11y.textAlignCenter": "מרכז",
+    "a11y.textAlignRight": "ימין",
+    "a11y.wordSpacing": "ריווח מילים",
+    "a11y.focusHighlight": "הדגשת מיקוד",
+    "a11y.hideImages": "הסתרת תמונות",
     "a11y.reset": "איפוס הכל",
 
     // Theme

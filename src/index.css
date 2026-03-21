@@ -220,3 +220,51 @@
 .high-saturation {
   filter: saturate(1.5);
 }
+
+/* Invert colors */
+.invert-colors {
+  filter: invert(1) hue-rotate(180deg);
+}
+.invert-colors img,
+.invert-colors video {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+/* Monochrome */
+.monochrome {
+  filter: grayscale(1);
+}
+
+/* Text alignment overrides */
+.text-align-left,
+.text-align-left * {
+  text-align: left !important;
+}
+.text-align-center,
+.text-align-center * {
+  text-align: center !important;
+}
+.text-align-right,
+.text-align-right * {
+  text-align: right !important;
+}
+
+/* Word spacing */
+.word-spacing,
+.word-spacing * {
+  word-spacing: 0.3em !important;
+}
+
+/* Focus highlight */
+.focus-highlight *:focus {
+  outline: 3px solid hsl(var(--primary)) !important;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 6px hsl(var(--primary) / 0.2) !important;
+}
+
+/* Hide images */
+.hide-images img,
+.hide-images svg:not(.a11y-icon),
+.hide-images video {
+  opacity: 0.05 !important;
+}
