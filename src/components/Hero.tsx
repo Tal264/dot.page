@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { ArrowRight, ArrowLeft, Sparkles } from "lucide-react";
-import heroBg from "@/assets/hero-bg.jpg";
+import heroVideo from "@/assets/hero-video.mp4.asset.json";
 
 const Hero = () => {
   const { t, isRTL } = useLanguage();
@@ -9,15 +9,16 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden section-padding pt-32">
-      {/* Background image with slow zoom */}
+      {/* Background video */}
       <div className="absolute inset-0">
-        <motion.div
-          animate={{ scale: [1, 1.08, 1] }}
-          transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
-          className="w-full h-full"
-        >
-          <img src={heroBg} alt="" className="w-full h-full object-cover" />
-        </motion.div>
+        <video
+          src={heroVideo.url}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+        />
         <div className="absolute inset-0 bg-background/70" />
       </div>
 
