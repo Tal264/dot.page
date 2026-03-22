@@ -81,7 +81,7 @@ const Hero = () => {
         />
       ))}
 
-      <div className="container mx-auto relative z-10 text-start max-w-4xl ltr:pl-4 rtl:pr-4">
+      <div className="container mx-auto relative z-10 text-center max-w-4xl flex flex-col items-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -108,7 +108,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10"
+          className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-10"
         >
           {t("hero.subtitle")}
         </motion.p>
@@ -117,7 +117,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="flex flex-col sm:flex-row items-start gap-4"
+          className="flex flex-col sm:flex-row items-center gap-4"
         >
           <a
             href="#contact"
