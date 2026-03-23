@@ -3,7 +3,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Target, Eye, Heart } from "lucide-react";
 import { useRef } from "react";
-import aboutImg from "@/assets/about-bg.jpg";
+import aboutVideo from "@/assets/about-video.mp4.asset.json";
 
 const values = [
   { icon: Target, titleKey: "about.mission.title", descKey: "about.mission.desc", color: "from-primary to-secondary" },
@@ -21,12 +21,12 @@ const About = () => {
     offset: ["start end", "end start"],
   });
 
-  const imageScale = useTransform(scrollYProgress, [0, 0.5, 1], [1.15, 1.35, 1.5]);
-  const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "-8%"]);
+  const videoScale = useTransform(scrollYProgress, [0, 0.5, 1], [1.0, 1.6, 2.2]);
+  const videoY = useTransform(scrollYProgress, [0, 1], ["0%", "-15%"]);
 
   return (
     <section id="about" className="section-padding relative overflow-hidden bg-background" ref={sectionRef}>
-      <div className="container mx-auto max-w-6xl relative z-10" ref={ref}>
+      <div className="container mx-auto max-w-7xl relative z-10" ref={ref}>
         {/* Header */}
         <div className="text-center mb-16">
           <motion.span
@@ -46,26 +46,11 @@ const About = () => {
           </motion.h2>
         </div>
 
-        {/* Image + Text side by side */}
-        <div className="grid md:grid-cols-2 gap-10 items-center mb-20">
-          {/* Scroll-zoom image */}
+        {/* Video + Text side by side */}
+        <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
+          {/* Text content - LEFT */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
-            animate={isVisible ? { opacity: 1, x: 0 } : {}}
-            transition={{ delay: 0.2, duration: 0.7 }}
-            className="rounded-2xl overflow-hidden shadow-xl aspect-[4/3]"
-          >
-            <motion.img
-              src={aboutImg}
-              alt="Our office space"
-              style={{ scale: imageScale, y: imageY }}
-              className="w-full h-full object-cover"
-            />
-          </motion.div>
-
-          {/* Text content */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
             animate={isVisible ? { opacity: 1, x: 0 } : {}}
             transition={{ delay: 0.3, duration: 0.7 }}
           >
@@ -73,7 +58,7 @@ const About = () => {
               initial={{ opacity: 0 }}
               animate={isVisible ? { opacity: 1 } : {}}
               transition={{ delay: 0.35 }}
-              className="text-muted-foreground leading-relaxed text-lg mb-6"
+              className="text-muted-foreground leading-relaxed text-xl md:text-2xl mb-8 font-medium"
             >
               {t("about.subtitle")}
             </motion.p>
@@ -81,10 +66,28 @@ const About = () => {
               initial={{ opacity: 0 }}
               animate={isVisible ? { opacity: 1 } : {}}
               transition={{ delay: 0.45 }}
-              className="text-muted-foreground leading-relaxed text-base"
+              className="text-muted-foreground leading-relaxed text-lg md:text-xl"
             >
               {t("about.story")}
             </motion.p>
+          </motion.div>
+
+          {/* Scroll-zoom video - RIGHT */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            animate={isVisible ? { opacity: 1, x: 0 } : {}}
+            transition={{ delay: 0.2, duration: 0.7 }}
+            className="rounded-2xl overflow-hidden shadow-2xl aspect-[4/3] md:min-h-[450px]"
+          >
+            <motion.video
+              src={aboutVideo.url}
+              autoPlay
+              muted
+              loop
+              playsInline
+              style={{ scale: videoScale, y: videoY }}
+              className="w-full h-full object-cover"
+            />
           </motion.div>
         </div>
 
