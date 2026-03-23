@@ -2,12 +2,11 @@ import { motion } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Target, Eye, Heart } from "lucide-react";
-import aboutBg from "@/assets/about-bg.jpg";
 
 const values = [
-  { icon: Target, titleKey: "about.mission.title", descKey: "about.mission.desc", color: "from-purple-500 to-pink-500" },
-  { icon: Eye, titleKey: "about.vision.title", descKey: "about.vision.desc", color: "from-blue-500 to-cyan-500" },
-  { icon: Heart, titleKey: "about.values.title", descKey: "about.values.desc", color: "from-green-400 to-emerald-500" },
+  { icon: Target, titleKey: "about.mission.title", descKey: "about.mission.desc", color: "from-primary to-secondary" },
+  { icon: Eye, titleKey: "about.vision.title", descKey: "about.vision.desc", color: "from-secondary to-accent" },
+  { icon: Heart, titleKey: "about.values.title", descKey: "about.values.desc", color: "from-accent to-primary" },
 ];
 
 const About = () => {
@@ -15,12 +14,46 @@ const About = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section id="about" className="section-padding relative overflow-hidden" ref={ref}>
-      {/* Background image with overlay */}
-      <div className="absolute inset-0">
-        <img src={aboutBg} alt="" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-background/85" />
+    <section id="about" className="section-padding relative overflow-hidden bg-background" ref={ref}>
+      {/* Animated background elements */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <motion.div
+          animate={{ y: [0, -30, 0], x: [0, 20, 0], rotate: [0, 5, 0] }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute -top-20 -right-20 w-96 h-96 rounded-full opacity-10"
+          style={{ background: "radial-gradient(circle, hsl(var(--primary) / 0.6), transparent)" }}
+        />
+        <motion.div
+          animate={{ y: [0, 25, 0], x: [0, -15, 0] }}
+          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          className="absolute -bottom-32 -left-20 w-80 h-80 rounded-full opacity-10"
+          style={{ background: "radial-gradient(circle, hsl(var(--secondary) / 0.6), transparent)" }}
+        />
+        <motion.div
+          animate={{ scale: [1, 1.15, 1], opacity: [0.05, 0.12, 0.05] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 4 }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full"
+          style={{ background: "radial-gradient(circle, hsl(var(--accent) / 0.4), transparent)" }}
+        />
       </div>
+
+      {/* Floating particles */}
+      {[...Array(8)].map((_, i) => (
+        <motion.div
+          key={i}
+          animate={{
+            y: [0, -40 - i * 8, 0],
+            x: [0, (i % 2 === 0 ? 15 : -15), 0],
+            opacity: [0.15, 0.35, 0.15],
+          }}
+          transition={{ duration: 7 + i * 1.2, repeat: Infinity, ease: "easeInOut", delay: i * 0.6 }}
+          className="absolute w-1.5 h-1.5 rounded-full bg-primary/20"
+          style={{
+            top: `${10 + i * 10}%`,
+            left: `${5 + i * 12}%`,
+          }}
+        />
+      ))}
 
       <div className="container mx-auto max-w-6xl relative z-10">
         <div className="text-center mb-16">
@@ -69,11 +102,16 @@ const About = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={isVisible ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.4 + i * 0.15 }}
+              whileHover={{ y: -8, transition: { duration: 0.3 } }}
               className="group relative p-8 rounded-2xl bg-card/80 border border-border hover:border-primary/40 transition-all duration-300 hover-glow backdrop-blur-sm"
             >
-              <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${item.color} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform`}>
+              <motion.div
+                animate={{ rotate: [0, 5, -5, 0] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: i * 0.8 }}
+                className={`w-14 h-14 rounded-xl bg-gradient-to-br ${item.color} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform`}
+              >
                 <item.icon className="w-7 h-7 text-primary-foreground" />
-              </div>
+              </motion.div>
               <h3 className="font-display font-semibold text-xl mb-3">{t(item.titleKey)}</h3>
               <p className="text-sm text-muted-foreground leading-relaxed">{t(item.descKey)}</p>
             </motion.div>

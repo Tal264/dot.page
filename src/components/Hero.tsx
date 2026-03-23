@@ -97,18 +97,18 @@ const Hero = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="font-display text-4xl sm:text-5xl md:text-7xl font-bold leading-tight mb-6"
+          className="font-display text-4xl sm:text-5xl md:text-7xl font-bold leading-tight mb-6 text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)] dark:text-white"
         >
           {t("hero.title1")}
           <br />
-          <span className="gradient-text">{t("hero.title2")}</span>
+          <span className="gradient-text drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)]">{t("hero.title2")}</span>
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-10"
+          className="text-lg md:text-xl text-white/90 dark:text-white/90 max-w-2xl mb-10 drop-shadow-[0_1px_6px_rgba(0,0,0,0.4)]"
         >
           {t("hero.subtitle")}
         </motion.p>
