@@ -100,18 +100,13 @@ const About = () => {
               initial={{ opacity: 0, x: -40 }}
               animate={isVisible ? { opacity: 1, x: 0 } : {}}
               transition={{ delay: 0.3, duration: 0.7 }}
+              dir="rtl"
+              style={{ wordBreak: "keep-all", overflowWrap: "break-word" }}
             >
-              <div className="mb-8">
-                <IgniteText
-                  text={t("about.subtitle")}
-                  delay={0.5}
-                  className="text-muted-foreground leading-relaxed text-2xl md:text-3xl font-semibold block"
-                />
-              </div>
               <div>
                 <IgniteText
                   text={t("about.story")}
-                  delay={1.2}
+                  delay={0.5}
                   className="text-muted-foreground leading-relaxed text-lg md:text-2xl block"
                 />
               </div>
