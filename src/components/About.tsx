@@ -100,18 +100,13 @@ const About = () => {
               initial={{ opacity: 0, x: -40 }}
               animate={isVisible ? { opacity: 1, x: 0 } : {}}
               transition={{ delay: 0.3, duration: 0.7 }}
+              dir="rtl"
+              style={{ wordBreak: "keep-all", overflowWrap: "break-word" }}
             >
-              <div className="mb-8">
-                <IgniteText
-                  text={t("about.subtitle")}
-                  delay={0.5}
-                  className="text-muted-foreground leading-relaxed text-2xl md:text-3xl font-semibold block"
-                />
-              </div>
               <div>
                 <IgniteText
                   text={t("about.story")}
-                  delay={1.2}
+                  delay={0.5}
                   className="text-muted-foreground leading-relaxed text-lg md:text-2xl block"
                 />
               </div>
@@ -139,7 +134,7 @@ const About = () => {
       </div>
 
       {/* Full-width brick wall with handwritten text */}
-      <div ref={brickRef} className="relative overflow-hidden w-full" style={{ minHeight: "70vh" }}>
+      <div ref={brickRef} className="relative overflow-hidden w-full" style={{ minHeight: "45vh" }}>
         {/* Brick background with scroll zoom */}
         <motion.div
           className="absolute inset-0"
@@ -156,39 +151,41 @@ const About = () => {
         </motion.div>
 
         {/* Subtle dark overlay */}
-        <div className="absolute inset-0 bg-black/30" />
+        <div className="absolute inset-0 bg-black/15" />
 
-        {/* Handwritten text on the wall */}
-        <div className="relative z-10 flex flex-col items-center justify-center h-full py-20 md:py-28 px-6 md:px-12" style={{ minHeight: "70vh" }}>
-          {wallTexts.map((item, i) => (
-            <motion.div
-              key={item.titleKey}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ delay: i * 0.25, duration: 0.8 }}
-              className="text-center mb-12 md:mb-16 last:mb-0 max-w-5xl"
-            >
-              <h3
-                className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 md:mb-6 text-white drop-shadow-lg"
-                style={{
-                  fontFamily: "'Caveat', 'Segoe Script', 'Comic Sans MS', cursive",
-                  textShadow: "2px 2px 8px rgba(0,0,0,0.5)",
-                }}
+        {/* Handwritten text on the wall - horizontal layout */}
+        <div className="relative z-10 flex flex-col items-center justify-center h-full py-12 md:py-16 px-6 md:px-12" style={{ minHeight: "45vh" }}>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10 w-full max-w-7xl">
+            {wallTexts.map((item, i) => (
+              <motion.div
+                key={item.titleKey}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ delay: i * 0.2, duration: 0.7 }}
+                className="text-center"
               >
-                {t(item.titleKey)}
-              </h3>
-              <p
-                className="text-lg md:text-2xl lg:text-3xl text-white/90 leading-relaxed drop-shadow-md"
-                style={{
-                  fontFamily: "'Caveat', 'Segoe Script', 'Comic Sans MS', cursive",
-                  textShadow: "1px 1px 4px rgba(0,0,0,0.4)",
-                }}
-              >
-                {t(item.descKey)}
-              </p>
-            </motion.div>
-          ))}
+                <h3
+                  className="text-3xl md:text-4xl lg:text-5xl font-bold mb-2 md:mb-3 text-black drop-shadow-sm"
+                  style={{
+                    fontFamily: "'Caveat', 'Segoe Script', 'Comic Sans MS', cursive",
+                    textShadow: "1px 1px 3px rgba(255,255,255,0.3)",
+                  }}
+                >
+                  {t(item.titleKey)}
+                </h3>
+                <p
+                  className="text-base md:text-lg lg:text-xl text-black/80 leading-relaxed"
+                  style={{
+                    fontFamily: "'Caveat', 'Segoe Script', 'Comic Sans MS', cursive",
+                    textShadow: "1px 1px 2px rgba(255,255,255,0.2)",
+                  }}
+                >
+                  {t(item.descKey)}
+                </p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

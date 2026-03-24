@@ -21,7 +21,7 @@ export const translations: Record<Language, Record<string, string>> = {
     "about.tag": "About Us",
     "about.title": "Crafting Digital Excellence",
     "about.subtitle": "We're a passionate team of designers, developers, and strategists who believe every brand deserves a powerful digital presence.",
-    "about.story": "Founded with a vision to bridge the gap between stunning design and powerful technology, WebStorey has grown into a full-service digital agency that delivers results. We combine creativity with data-driven strategies to build websites that not only look amazing but also convert visitors into loyal customers.",
+    "about.story": "WebStorey was founded with a vision to bridge the gap between stunning design and powerful technology, and has grown into a full-service digital agency that delivers results. We combine creativity with data-driven strategies to build websites that not only look amazing but also convert visitors into loyal customers.",
     "about.mission.title": "Our Mission",
     "about.mission.desc": "To empower businesses with beautiful, high-performing websites that tell their unique story and drive measurable growth.",
     "about.vision.title": "Our Vision",
