@@ -24,7 +24,6 @@ const IgniteText = ({ text, delay = 0, className = "" }: { text: string; delay?:
           }}
         >
           {letter === " " ? "\u00A0" : letter}
-          {/* Light flash per letter */}
           <motion.span
             className="absolute inset-0 pointer-events-none"
             style={{
@@ -48,55 +47,11 @@ const checklistItems = [
   { titleKey: "about.values.title", descKey: "about.values.desc" },
 ];
 
-/* Split text but keep WebStorey as LTR */
-const RtlIgniteText = ({ text, delay = 0, className = "" }: { text: string; delay?: number; className?: string }) => {
-  const parts = text.split(/(WebStorey)/);
-  let charIndex = 0;
-
-  return (
-    <span className={className}>
-      {parts.map((part, pi) => {
-        const isLtr = part === "WebStorey";
-        const startIdx = charIndex;
-        charIndex += part.length;
-        return (
-          <span key={pi} style={isLtr ? { direction: "ltr", unicodeBidi: "bidi-override" } : undefined}>
-            {part.split("").map((letter, i) => (
-              <motion.span
-                key={`${pi}-${i}`}
-                className="relative inline-block"
-                initial={{ opacity: 0, filter: "brightness(3) blur(4px)" }}
-                whileInView={{ opacity: 1, filter: "brightness(1) blur(0px)" }}
-                viewport={{ once: true }}
-                transition={{ delay: delay + (startIdx + i) * 0.02, duration: 0.4, ease: "easeOut" }}
-              >
-                {letter === " " ? "\u00A0" : letter}
-                <motion.span
-                  className="absolute inset-0 pointer-events-none"
-                  style={{
-                    background: "radial-gradient(circle, rgba(255,200,100,0.8) 0%, rgba(255,150,50,0.4) 40%, transparent 70%)",
-                    mixBlendMode: "screen",
-                  }}
-                  initial={{ opacity: 1, scale: 1.5 }}
-                  whileInView={{ opacity: 0, scale: 0.5 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: delay + (startIdx + i) * 0.02, duration: 0.6 }}
-                />
-              </motion.span>
-            ))}
-          </span>
-        );
-      })}
-    </span>
-  );
-};
-
 const About = () => {
   const { t } = useLanguage();
   const { ref, isVisible } = useScrollAnimation();
   const sectionRef = useRef<HTMLDivElement>(null);
   const brickRef = useRef<HTMLDivElement>(null);
-  const topRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -116,7 +71,7 @@ const About = () => {
   return (
     <section id="about" className="relative overflow-hidden bg-background" ref={sectionRef}>
       {/* Top section with video + text */}
-      <div className="section-padding" ref={topRef}>
+      <div className="section-padding">
         <div className="container mx-auto max-w-7xl relative z-10" ref={ref}>
           {/* Header */}
           <div className="text-center mb-16">
@@ -144,24 +99,22 @@ const About = () => {
               initial={{ opacity: 0, x: -40 }}
               animate={isVisible ? { opacity: 1, x: 0 } : {}}
               transition={{ delay: 0.3, duration: 0.7 }}
-              dir="rtl"
+              className="max-w-md"
               style={{ overflowWrap: "break-word", wordWrap: "break-word" }}
             >
-              <div>
-                <RtlIgniteText
-                  text={t("about.story")}
-                  delay={0.5}
-                  className="text-muted-foreground leading-relaxed text-lg md:text-2xl block"
-                />
-              </div>
+              <IgniteText
+                text={t("about.story")}
+                delay={0.5}
+                className="text-muted-foreground leading-loose text-xl md:text-3xl block"
+              />
             </motion.div>
 
-            {/* Scroll-zoom video - RIGHT */}
+            {/* Scroll-zoom video - RIGHT, no rounded corners */}
             <motion.div
               initial={{ opacity: 0, x: 40 }}
               animate={isVisible ? { opacity: 1, x: 0 } : {}}
               transition={{ delay: 0.2, duration: 0.7 }}
-              className="rounded-2xl overflow-hidden shadow-2xl aspect-[4/3] md:min-h-[450px]"
+              className="overflow-hidden shadow-2xl aspect-[4/3] md:min-h-[450px]"
             >
               <motion.video
                 src={aboutVideo.url}
@@ -194,8 +147,8 @@ const About = () => {
           />
         </motion.div>
 
-        {/* Subtle dark overlay */}
-        <div className="absolute inset-0 bg-black/10" />
+        {/* Overlay for contrast in both modes */}
+        <div className="absolute inset-0 bg-black/20 dark:bg-black/30" />
 
         {/* Checklist on the wall */}
         <div className="relative z-10 flex flex-col justify-center h-full px-6 md:px-16 lg:px-24 py-8">
@@ -209,7 +162,7 @@ const About = () => {
                 transition={{ delay: i * 0.25, duration: 0.6, ease: "easeOut" }}
                 className="flex items-start gap-3 md:gap-5"
               >
-                {/* Checkbox mark */}
+                {/* Animated checkbox mark */}
                 <motion.span
                   initial={{ scale: 0, rotate: -45 }}
                   whileInView={{ scale: 1, rotate: 0 }}
@@ -218,33 +171,60 @@ const About = () => {
                   className="text-3xl md:text-5xl mt-0.5 flex-shrink-0 select-none"
                   style={{
                     fontFamily: "'Caveat', 'Segoe Script', cursive",
-                    textShadow: "1px 1px 3px rgba(255,255,255,0.3)",
+                    color: "#1a1a1a",
+                    textShadow: "0 0 8px rgba(255,255,255,0.6), 0 2px 4px rgba(0,0,0,0.3)",
                   }}
                 >
                   ✓
                 </motion.span>
 
-                {/* Title + description in same row */}
+                {/* Title + description */}
                 <div className="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-3">
-                  <h3
-                    className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-black whitespace-nowrap"
+                  <motion.h3
+                    className="text-2xl md:text-3xl lg:text-4xl whitespace-nowrap"
                     style={{
                       fontFamily: "'Caveat', 'Segoe Script', cursive",
-                      textShadow: "1px 1px 3px rgba(255,255,255,0.25)",
+                      fontWeight: 700,
+                      color: "#111111",
+                      textShadow: "0 0 12px rgba(255,255,255,0.7), 0 1px 3px rgba(0,0,0,0.4)",
+                      WebkitTextStroke: "0.5px rgba(0,0,0,0.3)",
                     }}
+                    animate={{
+                      textShadow: [
+                        "0 0 12px rgba(255,255,255,0.7), 0 1px 3px rgba(0,0,0,0.4)",
+                        "0 0 20px rgba(255,255,255,0.9), 0 1px 6px rgba(0,0,0,0.5)",
+                        "0 0 12px rgba(255,255,255,0.7), 0 1px 3px rgba(0,0,0,0.4)",
+                      ],
+                    }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                   >
                     {t(item.titleKey)}
-                  </h3>
-                  <span className="hidden md:inline text-2xl lg:text-3xl text-black/60" style={{ fontFamily: "'Caveat', cursive" }}>—</span>
-                  <p
-                    className="text-lg md:text-xl lg:text-2xl text-black/75 leading-snug"
+                  </motion.h3>
+                  <span
+                    className="hidden md:inline text-2xl lg:text-3xl"
+                    style={{ fontFamily: "'Caveat', cursive", color: "rgba(0,0,0,0.5)" }}
+                  >
+                    —
+                  </span>
+                  <motion.p
+                    className="text-lg md:text-xl lg:text-2xl leading-snug"
                     style={{
                       fontFamily: "'Caveat', 'Segoe Script', cursive",
-                      textShadow: "1px 1px 2px rgba(255,255,255,0.15)",
+                      fontWeight: 600,
+                      color: "#222222",
+                      textShadow: "0 0 10px rgba(255,255,255,0.6), 0 1px 2px rgba(0,0,0,0.3)",
                     }}
+                    animate={{
+                      textShadow: [
+                        "0 0 10px rgba(255,255,255,0.6), 0 1px 2px rgba(0,0,0,0.3)",
+                        "0 0 16px rgba(255,255,255,0.8), 0 1px 4px rgba(0,0,0,0.4)",
+                        "0 0 10px rgba(255,255,255,0.6), 0 1px 2px rgba(0,0,0,0.3)",
+                      ],
+                    }}
+                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
                   >
                     {t(item.descKey)}
-                  </p>
+                  </motion.p>
                 </div>
               </motion.div>
             ))}

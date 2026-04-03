@@ -1,3 +1,4 @@
+import { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
@@ -14,12 +15,42 @@ const services = [
   { icon: Stamp, titleKey: "services.brand.title", descKey: "services.brand.desc", color: "from-orange-400 to-red-500", img: serviceBrand },
 ];
 
+// Duplicate for infinite loop
+const duplicatedServices = [...services, ...services];
+
 const Services = () => {
   const { t, isRTL } = useLanguage();
   const { ref, isVisible } = useScrollAnimation();
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [isPaused, setIsPaused] = useState(false);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
+  // Auto-scroll animation
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    let animId: number;
+    let pos = 0;
+    const speed = 0.5; // px per frame
+
+    const step = () => {
+      if (!isPaused) {
+        pos += speed;
+        // Reset when we've scrolled past the first set
+        const halfWidth = track.scrollWidth / 2;
+        if (pos >= halfWidth) pos = 0;
+        track.style.transform = `translateX(-${pos}px)`;
+      }
+      animId = requestAnimationFrame(step);
+    };
+
+    animId = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(animId);
+  }, [isPaused]);
 
   return (
-    <section id="services" className="section-padding relative" ref={ref}>
+    <section id="services" className="section-padding relative overflow-hidden" ref={ref}>
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-16">
           <motion.span
@@ -46,38 +77,65 @@ const Services = () => {
             {t("services.subtitle")}
           </motion.p>
         </div>
+      </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {services.map((service, i) => (
-            <motion.div
-              key={service.titleKey}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isVisible ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.2 + i * 0.1 }}
-              className="group relative rounded-xl overflow-hidden bg-card border border-border hover:border-primary/40 transition-all duration-300 hover-glow cursor-pointer"
+      {/* Auto-scrolling carousel - full width */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={isVisible ? { opacity: 1, y: 0 } : {}}
+        transition={{ delay: 0.3 }}
+        className="relative w-full overflow-hidden"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => { setIsPaused(false); setHoveredIndex(null); }}
+      >
+        {/* Fade edges */}
+        <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+
+        <div
+          ref={trackRef}
+          className="flex gap-6 px-4"
+          style={{ willChange: "transform" }}
+        >
+          {duplicatedServices.map((service, i) => (
+            <div
+              key={`${service.titleKey}-${i}`}
+              className="flex-shrink-0 w-72 md:w-80"
+              onMouseEnter={() => setHoveredIndex(i)}
+              onMouseLeave={() => setHoveredIndex(null)}
             >
-              {/* Background image */}
-              <div className="relative h-40 overflow-hidden">
-                <motion.img
-                  src={service.img}
-                  alt=""
-                  className="w-full h-full object-cover"
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ duration: 0.5 }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-card via-card/60 to-transparent" />
-                <div className={`absolute top-4 ${isRTL ? 'right-4' : 'left-4'} w-12 h-12 rounded-lg bg-gradient-to-br ${service.color} flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg`}>
-                  <service.icon className="w-6 h-6 text-primary-foreground" />
+              <div className="group relative rounded-xl overflow-hidden bg-card border border-border hover:border-primary/40 transition-all duration-300 hover-glow cursor-pointer h-full">
+                {/* Background image with zoom */}
+                <div className="relative h-48 overflow-hidden">
+                  <motion.img
+                    src={service.img}
+                    alt=""
+                    className="w-full h-full object-cover transition-transform duration-700"
+                    animate={{
+                      scale: hoveredIndex === i ? 1.15 : 1.05,
+                    }}
+                    transition={{ duration: 0.6 }}
+                  />
+                  {/* Dark overlay for text contrast */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/10" />
+                  <div className={`absolute top-4 ${isRTL ? 'right-4' : 'left-4'} w-12 h-12 rounded-lg bg-gradient-to-br ${service.color} flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg`}>
+                    <service.icon className="w-6 h-6 text-white" />
+                  </div>
+                  {/* Title overlay on image */}
+                  <div className="absolute bottom-3 left-4 right-4">
+                    <h3 className="font-display font-semibold text-lg text-white drop-shadow-lg">
+                      {t(service.titleKey)}
+                    </h3>
+                  </div>
+                </div>
+                <div className="p-5 bg-card">
+                  <p className="text-sm text-muted-foreground leading-relaxed">{t(service.descKey)}</p>
                 </div>
               </div>
-              <div className="p-5">
-                <h3 className="font-display font-semibold text-lg mb-2">{t(service.titleKey)}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{t(service.descKey)}</p>
-              </div>
-            </motion.div>
+            </div>
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };
