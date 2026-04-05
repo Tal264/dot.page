@@ -50,7 +50,7 @@ const checklistItems = [
 ];
 
 const About = () => {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const { ref, isVisible } = useScrollAnimation();
   const sectionRef = useRef<HTMLDivElement>(null);
   const brickRef = useRef<HTMLDivElement>(null);
