@@ -6,47 +6,39 @@ import aboutVideo from "@/assets/about-video.mp4.asset.json";
 import brickWall from "@/assets/brick-wall.jpg";
 import SectionTag from "@/components/SectionTag";
 
-/* Word-by-word ignite reveal */
+/* Word-by-word ignite reveal — no letter splitting to avoid RTL reversal */
 const IgniteText = ({ text, delay = 0, className = "" }: { text: string; delay?: number; className?: string }) => {
   const words = text.split(" ");
-  let charIndex = 0;
   return (
-    <span className={className}>
-      {words.map((word, wi) => {
-        const startIndex = charIndex;
-        charIndex += word.length + 1;
-        return (
-          <span key={wi} className="inline-block whitespace-nowrap" style={{ marginRight: "0.3em" }}>
-            {word.split("").map((letter, li) => (
-              <motion.span
-                key={li}
-                className="relative inline-block"
-                initial={{ opacity: 0, filter: "brightness(3) blur(4px)" }}
-                whileInView={{ opacity: 1, filter: "brightness(1) blur(0px)" }}
-                viewport={{ once: true }}
-                transition={{
-                  delay: delay + (startIndex + li) * 0.03,
-                  duration: 0.4,
-                  ease: "easeOut",
-                }}
-              >
-                {letter}
-                <motion.span
-                  className="absolute inset-0 pointer-events-none"
-                  style={{
-                    background: "radial-gradient(circle, rgba(255,200,100,0.8) 0%, rgba(255,150,50,0.4) 40%, transparent 70%)",
-                    mixBlendMode: "screen",
-                  }}
-                  initial={{ opacity: 1, scale: 1.5 }}
-                  whileInView={{ opacity: 0, scale: 0.5 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: delay + (startIndex + li) * 0.03, duration: 0.6 }}
-                />
-              </motion.span>
-            ))}
-          </span>
-        );
-      })}
+    <span className={className} style={{ lineHeight: 2.2 }}>
+      {words.map((word, wi) => (
+        <motion.span
+          key={wi}
+          className="relative inline-block"
+          style={{ marginInlineEnd: "0.3em" }}
+          initial={{ opacity: 0, filter: "brightness(3) blur(4px)" }}
+          whileInView={{ opacity: 1, filter: "brightness(1) blur(0px)" }}
+          viewport={{ once: false, margin: "-50px" }}
+          transition={{
+            delay: delay + wi * 0.06,
+            duration: 0.5,
+            ease: "easeOut",
+          }}
+        >
+          {word}
+          <motion.span
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background: "radial-gradient(circle, rgba(255,200,100,0.8) 0%, rgba(255,150,50,0.4) 40%, transparent 70%)",
+              mixBlendMode: "screen",
+            }}
+            initial={{ opacity: 1, scale: 1.5 }}
+            whileInView={{ opacity: 0, scale: 0.5 }}
+            viewport={{ once: false }}
+            transition={{ delay: delay + wi * 0.06, duration: 0.6 }}
+          />
+        </motion.span>
+      ))}
     </span>
   );
 };
@@ -58,7 +50,7 @@ const checklistItems = [
 ];
 
 const About = () => {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const { ref, isVisible } = useScrollAnimation();
   const sectionRef = useRef<HTMLDivElement>(null);
   const brickRef = useRef<HTMLDivElement>(null);
@@ -106,10 +98,10 @@ const About = () => {
               className="md:col-span-3"
             >
               <IgniteText
+                key={lang}
                 text={t("about.story")}
                 delay={0.5}
                 className="text-muted-foreground text-xl md:text-2xl block"
-                
               />
             </motion.div>
 
