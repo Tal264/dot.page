@@ -98,10 +98,10 @@ const About = () => {
               className="md:col-span-3"
             >
               <IgniteText
+                key={lang}
                 text={t("about.story")}
                 delay={0.5}
                 className="text-muted-foreground text-xl md:text-2xl block"
-                
               />
             </motion.div>
 
