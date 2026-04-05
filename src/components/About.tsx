@@ -4,8 +4,9 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useRef } from "react";
 import aboutVideo from "@/assets/about-video.mp4.asset.json";
 import brickWall from "@/assets/brick-wall.jpg";
+import SectionTag from "@/components/SectionTag";
 
-/* Word-by-word ignite reveal - prevents word splitting */
+/* Word-by-word ignite reveal */
 const IgniteText = ({ text, delay = 0, className = "" }: { text: string; delay?: number; className?: string }) => {
   const words = text.split(" ");
   let charIndex = 0;
@@ -84,13 +85,7 @@ const About = () => {
         <div className="container mx-auto max-w-7xl relative z-10" ref={ref}>
           {/* Header */}
           <div className="text-center mb-16">
-            <motion.span
-              initial={{ opacity: 0 }}
-              animate={isVisible ? { opacity: 1 } : {}}
-              className="inline-block px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase gradient-bg text-primary-foreground mb-4"
-            >
-              {t("about.tag")}
-            </motion.span>
+            <SectionTag isVisible={isVisible}>{t("about.tag")}</SectionTag>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               animate={isVisible ? { opacity: 1, y: 0 } : {}}
@@ -101,28 +96,29 @@ const About = () => {
             </motion.h2>
           </div>
 
-          {/* Video + Text side by side - video wider */}
-          <div className="grid md:grid-cols-5 gap-10 items-start">
-            {/* Text content - LEFT, narrower */}
+          {/* Video + Text side by side */}
+          <div className="grid md:grid-cols-7 gap-16 items-start">
+            {/* Text content - LEFT, narrower with more spacing */}
             <motion.div
               initial={{ opacity: 0, x: -40 }}
               animate={isVisible ? { opacity: 1, x: 0 } : {}}
               transition={{ delay: 0.3, duration: 0.7 }}
-              className="md:col-span-2"
+              className="md:col-span-3"
             >
               <IgniteText
                 text={t("about.story")}
                 delay={0.5}
-                className="text-muted-foreground leading-[2] text-xl md:text-2xl block"
+                className="text-muted-foreground text-xl md:text-2xl block"
+                
               />
             </motion.div>
 
-            {/* Scroll-zoom video - RIGHT, wider, no rounded corners */}
+            {/* Scroll-zoom video - RIGHT, slightly smaller */}
             <motion.div
               initial={{ opacity: 0, x: 40 }}
               animate={isVisible ? { opacity: 1, x: 0 } : {}}
               transition={{ delay: 0.2, duration: 0.7 }}
-              className="md:col-span-3 overflow-hidden shadow-2xl aspect-[4/3] md:min-h-[450px]"
+              className="md:col-span-4 overflow-hidden shadow-2xl aspect-[4/3]"
             >
               <motion.video
                 src={aboutVideo.url}
@@ -155,8 +151,23 @@ const About = () => {
           />
         </motion.div>
 
-        {/* Overlay for contrast in both modes */}
-        <div className="absolute inset-0 bg-black/30 dark:bg-black/50" />
+        {/* Flashlight / spotlight effect */}
+        <motion.div
+          className="absolute inset-0 pointer-events-none z-[1]"
+          animate={{
+            background: [
+              "radial-gradient(ellipse 60% 50% at 20% 50%, rgba(255,255,255,0.15) 0%, transparent 70%)",
+              "radial-gradient(ellipse 60% 50% at 50% 40%, rgba(255,255,255,0.2) 0%, transparent 70%)",
+              "radial-gradient(ellipse 60% 50% at 80% 50%, rgba(255,255,255,0.15) 0%, transparent 70%)",
+              "radial-gradient(ellipse 60% 50% at 50% 60%, rgba(255,255,255,0.2) 0%, transparent 70%)",
+              "radial-gradient(ellipse 60% 50% at 20% 50%, rgba(255,255,255,0.15) 0%, transparent 70%)",
+            ],
+          }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        />
+
+        {/* Overlay for contrast */}
+        <div className="absolute inset-0 bg-black/30 dark:bg-black/50 z-[2]" />
 
         {/* Checklist on the wall */}
         <div className="relative z-10 flex flex-col justify-center h-full px-6 md:px-16 lg:px-24 py-8">
@@ -185,10 +196,12 @@ const About = () => {
                 <div className="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-3">
                   <motion.h3
                     className="font-display text-xl md:text-2xl lg:text-3xl font-extrabold text-white whitespace-nowrap drop-shadow-lg"
+                    style={{ fontStyle: "italic" }}
                     animate={{
+                      rotate: [0, -0.5, 0.5, 0],
                       textShadow: [
                         "0 2px 8px rgba(0,0,0,0.5), 0 0 20px rgba(255,255,255,0.3)",
-                        "0 2px 12px rgba(0,0,0,0.6), 0 0 30px rgba(255,255,255,0.5)",
+                        "0 2px 12px rgba(0,0,0,0.6), 0 0 35px rgba(255,255,255,0.6)",
                         "0 2px 8px rgba(0,0,0,0.5), 0 0 20px rgba(255,255,255,0.3)",
                       ],
                     }}
@@ -201,10 +214,11 @@ const About = () => {
                   </span>
                   <motion.p
                     className="font-display text-base md:text-lg lg:text-xl font-semibold text-white/90 leading-snug drop-shadow-md"
+                    style={{ fontStyle: "italic" }}
                     animate={{
                       textShadow: [
                         "0 1px 6px rgba(0,0,0,0.4), 0 0 16px rgba(255,255,255,0.2)",
-                        "0 1px 10px rgba(0,0,0,0.5), 0 0 24px rgba(255,255,255,0.4)",
+                        "0 1px 10px rgba(0,0,0,0.5), 0 0 28px rgba(255,255,255,0.5)",
                         "0 1px 6px rgba(0,0,0,0.4), 0 0 16px rgba(255,255,255,0.2)",
                       ],
                     }}

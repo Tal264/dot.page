@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Send, Mail, Phone, MapPin, Calendar } from "lucide-react";
+import SectionTag from "@/components/SectionTag";
 import { toast } from "sonner";
 
 const Contact = () => {
@@ -20,13 +21,7 @@ const Contact = () => {
     <section id="contact" className="section-padding" ref={ref}>
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-16">
-          <motion.span
-            initial={{ opacity: 0 }}
-            animate={isVisible ? { opacity: 1 } : {}}
-            className="inline-block px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase gradient-bg text-primary-foreground mb-4"
-          >
-            {t("contact.tag")}
-          </motion.span>
+          <SectionTag isVisible={isVisible}>{t("contact.tag")}</SectionTag>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
