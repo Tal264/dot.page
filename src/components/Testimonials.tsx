@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Star, ChevronLeft, ChevronRight } from "lucide-react";
+import SectionTag from "@/components/SectionTag";
 
 const testimonials = [
   {
