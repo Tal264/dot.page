@@ -40,13 +40,7 @@ const Portfolio = () => {
     <section id="portfolio" className="section-padding" ref={ref}>
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-16">
-          <motion.span
-            initial={{ opacity: 0 }}
-            animate={isVisible ? { opacity: 1 } : {}}
-            className="inline-block px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase gradient-bg text-primary-foreground mb-4"
-          >
-            {t("portfolio.tag")}
-          </motion.span>
+          <SectionTag isVisible={isVisible}>{t("portfolio.tag")}</SectionTag>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}

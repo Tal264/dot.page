@@ -57,13 +57,7 @@ const Testimonials = () => {
 
       <div className="container mx-auto max-w-4xl relative z-10">
         <div className="text-center mb-16">
-          <motion.span
-            initial={{ opacity: 0 }}
-            animate={isVisible ? { opacity: 1 } : {}}
-            className="inline-block px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase gradient-bg text-primary-foreground mb-4"
-          >
-            {t("testimonials.tag")}
-          </motion.span>
+          <SectionTag isVisible={isVisible}>{t("testimonials.tag")}</SectionTag>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
