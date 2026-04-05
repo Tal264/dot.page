@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Check } from "lucide-react";
+import SectionTag from "@/components/SectionTag";
 
 const plans = [
   {
