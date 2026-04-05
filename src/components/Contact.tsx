@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Send, Mail, Phone, MapPin, Calendar } from "lucide-react";
+import SectionTag from "@/components/SectionTag";
 import { toast } from "sonner";
 
 const Contact = () => {
