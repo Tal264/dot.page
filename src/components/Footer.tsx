@@ -78,8 +78,9 @@ const Footer = () => {
 
         <div className="flex flex-col sm:flex-row items-center justify-between pt-8 border-t border-border gap-4">
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} WebStorey. {t("footer.rights")}
+            © {new Date().getFullYear()} dot.page. {t("footer.rights")}
           </p>
+
           <button onClick={scrollTop} className="p-2 rounded-full border border-border hover:border-primary/50 transition-colors" aria-label="Back to top">
             <ArrowUp className="w-4 h-4" />
           </button>
