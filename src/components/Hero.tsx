@@ -8,8 +8,10 @@ const phrases = [
   { text: "minimal", color: "#1a1a1a" },
   { text: "premium", color: "#E05A3A" },
   { text: "authoritative", color: "#1B4FD8" },
-  { text: "bold & energetic", color: "#1D7A4A" },
-  { text: "artisanal & boutique", color: "#E05A3A" },
+  { text: "bold", color: "#1D7A4A" },
+  { text: "energetic", color: "#1B4FD8" },
+  { text: "artisanal", color: "#E05A3A" },
+  { text: "boutique", color: "#1D7A4A" },
   { text: "page.", color: "#E05A3A" },
 ];
 
