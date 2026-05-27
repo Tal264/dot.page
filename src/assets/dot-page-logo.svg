@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="160" viewBox="0 0 300 160">
+  <title>Dotpage Logo - Warm Coral</title>
+  <text x="40" y="60" font-family="Inter, DM Sans, Arial, sans-serif" font-size="48" font-weight="400" letter-spacing="-1" fill="#1a1a1a">dot</text>
+  <circle cx="145" cy="66" r="7" fill="#E05A3A"/>
+  <text x="40" y="115" font-family="Inter, DM Sans, Arial, sans-serif" font-size="48" font-weight="600" letter-spacing="-1" fill="#E05A3A">page</text>
+  <text x="40" y="140" font-family="Courier New, monospace" font-size="12" letter-spacing="3" fill="#888888">web studio</text>
+</svg>
