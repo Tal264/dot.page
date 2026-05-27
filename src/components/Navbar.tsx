@@ -85,10 +85,12 @@ const Navbar = () => {
     >
       <div className="container mx-auto flex items-center justify-between h-16 md:h-20 px-4">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-2 group" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-          <img src={logoImg} alt="WebStorey" className="w-9 h-9 group-hover:scale-110 transition-transform" />
-          <span className="font-display font-bold text-xl gradient-text">WebStorey</span>
+        <a href="#" className="flex items-center gap-1.5 group" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+          <span className="font-display font-normal text-xl text-foreground">dot</span>
+          <img src={logoImg} alt="dot.page" className="w-4 h-4 group-hover:scale-110 transition-transform" />
+          <span className="font-display font-medium text-xl" style={{ color: "#E05A3A" }}>page</span>
         </a>
+
 
         {/* Desktop links */}
         <div className="hidden md:flex items-center gap-8">
