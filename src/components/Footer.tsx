@@ -1,5 +1,5 @@
 import { useLanguage } from "@/contexts/LanguageContext";
-import logoImg from "@/assets/logo.png";
+import logoImg from "@/assets/dot-page-logo.png";
 import { ArrowUp, Github, Twitter, Linkedin, Instagram } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -22,10 +22,10 @@ const Footer = () => {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <img src={logoImg} alt="WebStorey" className="w-8 h-8" />
-              <span className="font-display font-bold text-lg gradient-text">WebStorey</span>
+            <div className="mb-4">
+              <img src={logoImg} alt="dot.page web studio" className="h-14 w-auto" />
             </div>
+
             <p className="text-sm text-muted-foreground leading-relaxed">{t("footer.desc")}</p>
           </div>
 
@@ -78,8 +78,9 @@ const Footer = () => {
 
         <div className="flex flex-col sm:flex-row items-center justify-between pt-8 border-t border-border gap-4">
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} WebStorey. {t("footer.rights")}
+            © {new Date().getFullYear()} dot.page. {t("footer.rights")}
           </p>
+
           <button onClick={scrollTop} className="p-2 rounded-full border border-border hover:border-primary/50 transition-colors" aria-label="Back to top">
             <ArrowUp className="w-4 h-4" />
           </button>
