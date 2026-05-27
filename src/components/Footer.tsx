@@ -22,10 +22,10 @@ const Footer = () => {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <img src={logoImg} alt="WebStorey" className="w-8 h-8" />
-              <span className="font-display font-bold text-lg gradient-text">WebStorey</span>
+            <div className="mb-4">
+              <img src={logoImg} alt="dot.page web studio" className="h-14 w-auto" />
             </div>
+
             <p className="text-sm text-muted-foreground leading-relaxed">{t("footer.desc")}</p>
           </div>
 
