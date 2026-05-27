@@ -4,6 +4,8 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 import SectionTag from "@/components/SectionTag";
+import heroVideo from "@/assets/hero-video.mp4.asset.json";
+
 
 const testimonials = [
   {
@@ -51,9 +53,19 @@ const Testimonials = () => {
 
   return (
     <section className="section-padding relative overflow-hidden" ref={ref}>
-      <div className="absolute inset-0 opacity-20" style={{
-        backgroundImage: "radial-gradient(ellipse at 30% 50%, hsl(199 89% 48% / 0.15), transparent 60%)"
-      }} />
+      {/* Background video */}
+      <div className="absolute inset-0">
+        <video
+          src={heroVideo.url}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-background/70 backdrop-blur-sm" />
+      </div>
+
 
       <div className="container mx-auto max-w-4xl relative z-10">
         <div className="text-center mb-16">
