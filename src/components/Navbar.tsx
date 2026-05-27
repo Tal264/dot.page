@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useAccessibility } from "@/contexts/AccessibilityContext";
 import { useTheme } from "@/contexts/ThemeContext";
-import logoImg from "@/assets/logo.png";
+import logoImg from "@/assets/dot-page-logo.png";
 import { Menu, X, Globe, Accessibility, Sun, Moon, RotateCcw } from "lucide-react";
 import { Switch } from "@/components/ui/switch";
 
