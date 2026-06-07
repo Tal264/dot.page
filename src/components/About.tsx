@@ -201,7 +201,7 @@ const About = () => {
                   >
                     {t(item.titleKey)}
                   </motion.h3>
-                  <span className="hidden md:inline text-xl lg:text-2xl font-bold text-white/50">
+                  <span className="hidden md:inline text-xl lg:text-2xl font-bold text-neutral-900/40 dark:text-white/50">
                     —
                   </span>
                   <motion.p
