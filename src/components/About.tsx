@@ -167,18 +167,18 @@ const About = () => {
             {checklistItems.map((item, i) => (
               <motion.div
                 key={item.titleKey}
-                initial={{ opacity: 0, x: -60 }}
+                initial={{ opacity: 0, x: -80 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-30px" }}
-                transition={{ delay: i * 0.25, duration: 0.6, ease: "easeOut" }}
-                className="flex items-start gap-3 md:gap-5"
+                transition={{ delay: i * 0.45, duration: 0.7, ease: "easeOut" }}
+                className="flex items-start gap-3 md:gap-5 bg-background/70 backdrop-blur-sm rounded-xl px-5 py-4 md:px-7 md:py-5 shadow-lg"
               >
                 {/* Animated checkbox mark */}
                 <motion.span
                   initial={{ scale: 0, rotate: -45 }}
                   whileInView={{ scale: 1, rotate: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.25 + 0.3, duration: 0.4, type: "spring", stiffness: 200 }}
+                  transition={{ delay: i * 0.45 + 0.35, duration: 0.4, type: "spring", stiffness: 200 }}
                   className="text-3xl md:text-4xl mt-0.5 flex-shrink-0 select-none font-bold text-white drop-shadow-lg"
                 >
                   ✓

@@ -4,6 +4,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { useAccessibility } from "@/contexts/AccessibilityContext";
 import { useTheme } from "@/contexts/ThemeContext";
 import logoImg from "@/assets/dot-page-logo.svg";
+import logoImgDark from "@/assets/dot-page-logo-dark.svg";
 import { Menu, X, Globe, Accessibility, Sun, Moon, RotateCcw } from "lucide-react";
 import { Switch } from "@/components/ui/switch";
 
@@ -86,7 +87,7 @@ const Navbar = () => {
       <div className="container mx-auto flex items-center justify-between h-16 md:h-20 px-4">
         {/* Logo */}
         <a href="#" className="flex items-center group" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-          <img src={logoImg} alt="dot.page web studio" className="h-10 md:h-12 w-auto group-hover:scale-105 transition-transform" />
+          <img src={theme === "dark" ? logoImgDark : logoImg} alt="dot.page web studio" className="h-10 md:h-12 w-auto group-hover:scale-105 transition-transform" />
         </a>
 
 
