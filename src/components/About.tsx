@@ -179,7 +179,7 @@ const About = () => {
                   whileInView={{ scale: 1, rotate: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.45 + 0.35, duration: 0.4, type: "spring", stiffness: 200 }}
-                  className="text-3xl md:text-4xl mt-0.5 flex-shrink-0 select-none font-bold text-white drop-shadow-lg"
+                  className="text-3xl md:text-4xl mt-0.5 flex-shrink-0 select-none font-bold text-neutral-900 dark:text-white drop-shadow-lg"
                 >
                   ✓
                 </motion.span>
