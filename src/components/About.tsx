@@ -10,7 +10,7 @@ import SectionTag from "@/components/SectionTag";
 const IgniteText = ({ text, delay = 0, className = "" }: { text: string; delay?: number; className?: string }) => {
   const words = text.split(" ");
   return (
-    <span className={className} style={{ lineHeight: 2.2 }}>
+    <span className={className} style={{ lineHeight: 1.6 }}>
       {words.map((word, wi) => (
         <motion.span
           key={wi}
@@ -101,7 +101,7 @@ const About = () => {
                 key={lang}
                 text={t("about.story")}
                 delay={0.5}
-                className="text-muted-foreground text-xl md:text-2xl block"
+                className="text-muted-foreground text-xl md:text-2xl block leading-relaxed"
               />
             </motion.div>
 
@@ -127,7 +127,7 @@ const About = () => {
       </div>
 
       {/* Full-width brick wall checklist */}
-      <div ref={brickRef} className="relative overflow-hidden w-full aspect-[21/9] md:aspect-[3/1]">
+      <div ref={brickRef} className="relative overflow-hidden w-full aspect-[16/9] md:aspect-[2/1]">
         {/* Brick background with scroll zoom */}
         <motion.div
           className="absolute inset-0"
