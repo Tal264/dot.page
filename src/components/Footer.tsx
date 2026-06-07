@@ -1,11 +1,14 @@
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useTheme } from "@/contexts/ThemeContext";
 import logoImg from "@/assets/dot-page-logo.svg";
+import logoImgDark from "@/assets/dot-page-logo-dark.svg";
 import { ArrowUp, Github, Twitter, Linkedin, Instagram } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 
 const Footer = () => {
   const { t } = useLanguage();
+  const { theme } = useTheme();
   const [email, setEmail] = useState("");
 
   const handleSubscribe = (e: React.FormEvent) => {
@@ -23,7 +26,7 @@ const Footer = () => {
           {/* Brand */}
           <div>
             <div className="mb-4">
-              <img src={logoImg} alt="dot.page web studio" className="h-14 w-auto" />
+              <img src={theme === "dark" ? logoImgDark : logoImg} alt="dot.page web studio" className="h-14 w-auto" />
             </div>
 
             <p className="text-sm text-muted-foreground leading-relaxed">{t("footer.desc")}</p>
