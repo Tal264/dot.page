@@ -26,7 +26,7 @@ const Footer = () => {
           {/* Brand */}
           <div>
             <div className="mb-4">
-              <img src={theme === "dark" ? logoImgDark : logoImg} alt="dot.page web studio" className="h-14 w-auto" />
+              <img src={theme === "dark" ? logoImgDark : logoImg} alt="dot.page web studio" className="h-16 w-auto" />
             </div>
 
             <p className="text-sm text-muted-foreground leading-relaxed">{t("footer.desc")}</p>
