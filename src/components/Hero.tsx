@@ -5,7 +5,7 @@ const phrases = [
   { text: "art", color: "#E05A3A" },
   { text: "design", color: "#1B4FD8" },
   { text: "smart", color: "#1D7A4A" },
-  { text: "minimal", color: "#1a1a1a" },
+  { text: "minimal", color: "#1B4FD8" },
   { text: "premium", color: "#E05A3A" },
   { text: "authoritative", color: "#1B4FD8" },
   { text: "bold", color: "#1D7A4A" },

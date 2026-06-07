@@ -87,7 +87,7 @@ const Navbar = () => {
       <div className="container mx-auto flex items-center justify-between h-16 md:h-20 px-4">
         {/* Logo */}
         <a href="#" className="flex items-center group" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-          <img src={theme === "dark" ? logoImgDark : logoImg} alt="dot.page web studio" className="h-10 md:h-12 w-auto group-hover:scale-105 transition-transform" />
+          <img src={theme === "dark" ? logoImgDark : logoImg} alt="dot.page web studio" className="h-12 md:h-14 w-auto group-hover:scale-105 transition-transform" />
         </a>
 
 
