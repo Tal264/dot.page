@@ -187,7 +187,7 @@ const About = () => {
                 {/* Title + description */}
                 <div className="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-3">
                   <motion.h3
-                    className="font-display text-xl md:text-2xl lg:text-3xl font-extrabold text-white whitespace-nowrap drop-shadow-lg"
+                    className="font-display text-xl md:text-2xl lg:text-3xl font-extrabold text-neutral-900 dark:text-white whitespace-nowrap drop-shadow-lg"
                     style={{ fontStyle: "italic" }}
                     animate={{
                       rotate: [0, -0.5, 0.5, 0],
