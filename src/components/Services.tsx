@@ -73,7 +73,7 @@ const Services = () => {
 
       {/* Full-width slideshow with arrows */}
       <div className="relative w-full aspect-[16/7] md:aspect-[21/9] overflow-hidden select-none">
-        <AnimatePresence mode="wait" custom={direction}>
+        <AnimatePresence mode="popLayout" custom={direction} initial={false}>
           <motion.div
             key={current}
             custom={direction}
@@ -81,7 +81,7 @@ const Services = () => {
             initial="enter"
             animate="center"
             exit="exit"
-            transition={{ duration: 0.6, ease: "easeInOut" }}
+            transition={{ duration: 0.45, ease: [0.32, 0.72, 0, 1] }}
             className="absolute inset-0"
           >
             {/* Image with slow zoom */}

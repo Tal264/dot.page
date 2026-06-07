@@ -179,7 +179,7 @@ const About = () => {
                   whileInView={{ scale: 1, rotate: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.45 + 0.35, duration: 0.4, type: "spring", stiffness: 200 }}
-                  className="text-3xl md:text-4xl mt-0.5 flex-shrink-0 select-none font-bold text-white drop-shadow-lg"
+                  className="text-3xl md:text-4xl mt-0.5 flex-shrink-0 select-none font-bold text-neutral-900 dark:text-white drop-shadow-lg"
                 >
                   ✓
                 </motion.span>
@@ -187,7 +187,7 @@ const About = () => {
                 {/* Title + description */}
                 <div className="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-3">
                   <motion.h3
-                    className="font-display text-xl md:text-2xl lg:text-3xl font-extrabold text-white whitespace-nowrap drop-shadow-lg"
+                    className="font-display text-xl md:text-2xl lg:text-3xl font-extrabold text-neutral-900 dark:text-white whitespace-nowrap drop-shadow-lg"
                     style={{ fontStyle: "italic" }}
                     animate={{
                       rotate: [0, -0.5, 0.5, 0],
@@ -201,11 +201,11 @@ const About = () => {
                   >
                     {t(item.titleKey)}
                   </motion.h3>
-                  <span className="hidden md:inline text-xl lg:text-2xl font-bold text-white/50">
+                  <span className="hidden md:inline text-xl lg:text-2xl font-bold text-neutral-900/40 dark:text-white/50">
                     —
                   </span>
                   <motion.p
-                    className="font-display text-base md:text-lg lg:text-xl font-semibold text-white/90 leading-snug drop-shadow-md"
+                    className="font-display text-base md:text-lg lg:text-xl font-semibold text-neutral-800 dark:text-white/90 leading-snug drop-shadow-md"
                     style={{ fontStyle: "italic" }}
                     animate={{
                       textShadow: [
