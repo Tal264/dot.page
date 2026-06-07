@@ -205,7 +205,7 @@ const About = () => {
                     —
                   </span>
                   <motion.p
-                    className="font-display text-base md:text-lg lg:text-xl font-semibold text-white/90 leading-snug drop-shadow-md"
+                    className="font-display text-base md:text-lg lg:text-xl font-semibold text-neutral-800 dark:text-white/90 leading-snug drop-shadow-md"
                     style={{ fontStyle: "italic" }}
                     animate={{
                       textShadow: [
