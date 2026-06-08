@@ -3,8 +3,8 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useRef } from "react";
 import aboutVideo from "@/assets/about-video.mp4.asset.json";
-import brickWall from "@/assets/brick-wall.jpg";
 import SectionTag from "@/components/SectionTag";
+import AnimatedHeading from "@/components/AnimatedHeading";
 
 /* Word-by-word ignite reveal — no letter splitting to avoid RTL reversal */
 const IgniteText = ({ text, delay = 0, className = "" }: { text: string; delay?: number; className?: string }) => {
@@ -43,183 +43,165 @@ const IgniteText = ({ text, delay = 0, className = "" }: { text: string; delay?:
   );
 };
 
-const checklistItems = [
-  { titleKey: "about.mission.title", descKey: "about.mission.desc" },
-  { titleKey: "about.vision.title", descKey: "about.vision.desc" },
-  { titleKey: "about.values.title", descKey: "about.values.desc" },
+const pillars = [
+  { titleKey: "about.mission.title", descKey: "about.mission.desc", color: "hsl(var(--primary))", icon: "◆" },
+  { titleKey: "about.vision.title", descKey: "about.vision.desc", color: "hsl(var(--secondary))", icon: "◉" },
+  { titleKey: "about.values.title", descKey: "about.values.desc", color: "hsl(var(--accent))", icon: "✦" },
 ];
 
 const About = () => {
   const { t, lang } = useLanguage();
   const { ref, isVisible } = useScrollAnimation();
   const sectionRef = useRef<HTMLDivElement>(null);
-  const brickRef = useRef<HTMLDivElement>(null);
+  const pillarsRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
   });
 
-  const { scrollYProgress: brickScrollProgress } = useScroll({
-    target: brickRef,
-    offset: ["start end", "end start"],
-  });
-
   const videoScale = useTransform(scrollYProgress, [0, 0.5, 1], [1.0, 1.6, 2.2]);
   const videoY = useTransform(scrollYProgress, [0, 1], ["0%", "-15%"]);
-  const brickScale = useTransform(brickScrollProgress, [0, 0.5, 1], [1.0, 1.2, 1.4]);
-  const brickY = useTransform(brickScrollProgress, [0, 1], ["0%", "-8%"]);
 
   return (
     <section id="about" className="relative overflow-hidden bg-background" ref={sectionRef}>
-      {/* Top section with video + text */}
-      <div className="section-padding">
-        <div className="container mx-auto max-w-7xl relative z-10" ref={ref}>
-          {/* Header */}
-          <div className="text-center mb-16">
-            <SectionTag isVisible={isVisible}>{t("about.tag")}</SectionTag>
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              animate={isVisible ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.1 }}
-              className="font-display text-3xl md:text-5xl font-bold mb-4"
-            >
-              {t("about.title")}
-            </motion.h2>
-          </div>
+      {/* Top section: header + ignite text + edge-to-edge video */}
+      <div className="pt-20 md:pt-32 pb-16 md:pb-24">
+        <div className="container mx-auto max-w-7xl px-4 md:px-8 mb-12 text-center" ref={ref}>
+          <SectionTag isVisible={isVisible}>{t("about.tag")}</SectionTag>
+          <AnimatedHeading isVisible={isVisible}>{t("about.title")}</AnimatedHeading>
+        </div>
 
-          {/* Video + Text side by side */}
-          <div className="grid md:grid-cols-7 gap-16 items-start">
-            {/* Text content - LEFT, narrower with more spacing */}
-            <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              animate={isVisible ? { opacity: 1, x: 0 } : {}}
-              transition={{ delay: 0.3, duration: 0.7 }}
-              className="md:col-span-3"
-            >
-              <IgniteText
-                key={lang}
-                text={t("about.story")}
-                delay={0.5}
-                className="text-muted-foreground text-xl md:text-2xl block leading-relaxed"
-              />
-            </motion.div>
+        {/* Edge-to-edge video on the left, text on the right */}
+        <div className="grid md:grid-cols-12 gap-10 md:gap-16 items-center">
+          {/* Video — flush to left edge, larger */}
+          <motion.div
+            initial={{ opacity: 0, x: -60 }}
+            animate={isVisible ? { opacity: 1, x: 0 } : {}}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="md:col-span-7 overflow-hidden shadow-2xl aspect-[4/3] md:aspect-[5/4] w-full md:rounded-r-3xl"
+          >
+            <motion.video
+              src={aboutVideo.url}
+              autoPlay
+              muted
+              loop
+              playsInline
+              style={{ scale: videoScale, y: videoY }}
+              className="w-full h-full object-cover"
+            />
+          </motion.div>
 
-            {/* Scroll-zoom video - RIGHT, slightly smaller */}
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              animate={isVisible ? { opacity: 1, x: 0 } : {}}
-              transition={{ delay: 0.2, duration: 0.7 }}
-              className="md:col-span-4 overflow-hidden shadow-2xl aspect-[4/3]"
-            >
-              <motion.video
-                src={aboutVideo.url}
-                autoPlay
-                muted
-                loop
-                playsInline
-                style={{ scale: videoScale, y: videoY }}
-                className="w-full h-full object-cover"
-              />
-            </motion.div>
-          </div>
+          {/* Text */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            animate={isVisible ? { opacity: 1, x: 0 } : {}}
+            transition={{ delay: 0.3, duration: 0.7 }}
+            className="md:col-span-5 px-6 md:px-10 lg:pe-16"
+          >
+            <IgniteText
+              key={lang}
+              text={t("about.story")}
+              delay={0.5}
+              className="text-muted-foreground text-xl md:text-2xl block leading-relaxed"
+            />
+          </motion.div>
         </div>
       </div>
 
-      {/* Full-width brick wall checklist */}
-      <div ref={brickRef} className="relative overflow-hidden w-full aspect-[16/9] md:aspect-[2/1]">
-        {/* Brick background with scroll zoom */}
+      {/* === New dynamic pillars section (replaces brick wall) === */}
+      <div ref={pillarsRef} className="relative overflow-hidden py-20 md:py-28">
+        {/* Animated background orbs */}
         <motion.div
-          className="absolute inset-0"
-          style={{ scale: brickScale, y: brickY }}
-        >
-          <img
-            src={brickWall}
-            alt=""
-            className="w-full h-full object-cover"
-            loading="lazy"
-            width={1920}
-            height={900}
-          />
-        </motion.div>
-
-        {/* Flashlight / spotlight effect */}
+          aria-hidden
+          className="absolute -top-32 -left-32 w-[28rem] h-[28rem] rounded-full opacity-30 blur-3xl"
+          style={{ background: "radial-gradient(circle, hsl(var(--primary)) 0%, transparent 70%)" }}
+          animate={{ x: [0, 60, 0], y: [0, 40, 0] }}
+          transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+        />
         <motion.div
-          className="absolute inset-0 pointer-events-none z-[1]"
-          animate={{
-            background: [
-              "radial-gradient(ellipse 60% 50% at 20% 50%, rgba(255,255,255,0.15) 0%, transparent 70%)",
-              "radial-gradient(ellipse 60% 50% at 50% 40%, rgba(255,255,255,0.2) 0%, transparent 70%)",
-              "radial-gradient(ellipse 60% 50% at 80% 50%, rgba(255,255,255,0.15) 0%, transparent 70%)",
-              "radial-gradient(ellipse 60% 50% at 50% 60%, rgba(255,255,255,0.2) 0%, transparent 70%)",
-              "radial-gradient(ellipse 60% 50% at 20% 50%, rgba(255,255,255,0.15) 0%, transparent 70%)",
-            ],
-          }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          aria-hidden
+          className="absolute -bottom-32 -right-32 w-[28rem] h-[28rem] rounded-full opacity-30 blur-3xl"
+          style={{ background: "radial-gradient(circle, hsl(var(--secondary)) 0%, transparent 70%)" }}
+          animate={{ x: [0, -50, 0], y: [0, -30, 0] }}
+          transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          aria-hidden
+          className="absolute top-1/3 left-1/2 w-[22rem] h-[22rem] rounded-full opacity-20 blur-3xl"
+          style={{ background: "radial-gradient(circle, hsl(var(--accent)) 0%, transparent 70%)" }}
+          animate={{ x: [0, 40, -40, 0], y: [0, -40, 30, 0] }}
+          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
         />
 
-        {/* Overlay for contrast */}
-        <div className="absolute inset-0 bg-black/30 dark:bg-black/50 z-[2]" />
-
-        {/* Checklist on the wall */}
-        <div className="relative z-10 flex flex-col justify-center h-full px-6 md:px-16 lg:px-24 py-8">
-          <div className="flex flex-col gap-4 md:gap-6 max-w-4xl mx-auto w-full">
-            {checklistItems.map((item, i) => (
-              <motion.div
+        <div className="relative z-10 container mx-auto max-w-7xl px-4 md:px-8">
+          <div className="grid md:grid-cols-3 gap-6 md:gap-8">
+            {pillars.map((item, i) => (
+              <motion.article
                 key={item.titleKey}
-                initial={{ opacity: 0, x: -80 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-30px" }}
-                transition={{ delay: i * 0.45, duration: 0.7, ease: "easeOut" }}
-                className="flex items-start gap-3 md:gap-5 bg-background/70 backdrop-blur-sm rounded-xl px-5 py-4 md:px-7 md:py-5 shadow-lg"
+                initial={{ opacity: 0, y: 60 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ delay: i * 0.15, duration: 0.7, ease: "easeOut" }}
+                whileHover={{ y: -8 }}
+                className="group relative rounded-3xl p-8 md:p-10 bg-card/70 backdrop-blur-xl border border-border/60 overflow-hidden shadow-xl hover:shadow-2xl transition-shadow"
               >
-                {/* Animated checkbox mark */}
+                {/* Animated gradient border on hover */}
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  style={{
+                    background: `linear-gradient(135deg, ${item.color} 0%, transparent 60%)`,
+                    WebkitMask:
+                      "linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)",
+                    WebkitMaskComposite: "xor",
+                    maskComposite: "exclude",
+                    padding: "1.5px",
+                  }}
+                />
+
+                {/* Big floating number */}
                 <motion.span
-                  initial={{ scale: 0, rotate: -45 }}
-                  whileInView={{ scale: 1, rotate: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.45 + 0.35, duration: 0.4, type: "spring", stiffness: 200 }}
-                  className="text-3xl md:text-4xl mt-0.5 flex-shrink-0 select-none font-bold text-neutral-900 dark:text-white drop-shadow-lg"
+                  className="absolute -top-6 -right-4 font-display text-[8rem] md:text-[10rem] font-extrabold leading-none select-none"
+                  style={{ color: item.color, opacity: 0.12 }}
+                  animate={{ y: [0, -8, 0], rotate: [0, 2, 0] }}
+                  transition={{ duration: 6 + i, repeat: Infinity, ease: "easeInOut" }}
                 >
-                  ✓
+                  0{i + 1}
                 </motion.span>
 
-                {/* Title + description */}
-                <div className="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-3">
-                  <motion.h3
-                    className="font-display text-xl md:text-2xl lg:text-3xl font-extrabold text-neutral-900 dark:text-white whitespace-nowrap drop-shadow-lg"
-                    style={{ fontStyle: "italic" }}
-                    animate={{
-                      rotate: [0, -0.5, 0.5, 0],
-                      textShadow: [
-                        "0 2px 8px rgba(0,0,0,0.5), 0 0 20px rgba(255,255,255,0.3)",
-                        "0 2px 12px rgba(0,0,0,0.6), 0 0 35px rgba(255,255,255,0.6)",
-                        "0 2px 8px rgba(0,0,0,0.5), 0 0 20px rgba(255,255,255,0.3)",
-                      ],
-                    }}
-                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                  >
-                    {t(item.titleKey)}
-                  </motion.h3>
-                  <span className="hidden md:inline text-xl lg:text-2xl font-bold text-neutral-900/40 dark:text-white/50">
-                    —
-                  </span>
-                  <motion.p
-                    className="font-display text-base md:text-lg lg:text-xl font-semibold text-neutral-800 dark:text-white/90 leading-snug drop-shadow-md"
-                    style={{ fontStyle: "italic" }}
-                    animate={{
-                      textShadow: [
-                        "0 1px 6px rgba(0,0,0,0.4), 0 0 16px rgba(255,255,255,0.2)",
-                        "0 1px 10px rgba(0,0,0,0.5), 0 0 28px rgba(255,255,255,0.5)",
-                        "0 1px 6px rgba(0,0,0,0.4), 0 0 16px rgba(255,255,255,0.2)",
-                      ],
-                    }}
-                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                  >
-                    {t(item.descKey)}
-                  </motion.p>
-                </div>
-              </motion.div>
+                {/* Icon */}
+                <motion.div
+                  className="relative inline-flex items-center justify-center w-14 h-14 rounded-2xl mb-6 text-2xl"
+                  style={{ background: `${item.color}`, color: "white" }}
+                  animate={{ rotate: [0, 6, -6, 0] }}
+                  transition={{ duration: 5 + i * 0.5, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  {item.icon}
+                </motion.div>
+
+                {/* Title */}
+                <h3
+                  className="relative font-display text-2xl md:text-3xl font-bold mb-3 text-foreground"
+                >
+                  {t(item.titleKey)}
+                </h3>
+
+                {/* Accent bar */}
+                <motion.span
+                  className="relative block h-[3px] rounded-full mb-4"
+                  style={{ background: item.color }}
+                  initial={{ width: 0 }}
+                  whileInView={{ width: "3rem" }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.15 + 0.4, duration: 0.6 }}
+                />
+
+                {/* Description */}
+                <p className="relative text-muted-foreground text-base md:text-lg leading-relaxed">
+                  {t(item.descKey)}
+                </p>
+              </motion.article>
             ))}
           </div>
         </div>

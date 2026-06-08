@@ -4,6 +4,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { ExternalLink } from "lucide-react";
 import SectionTag from "@/components/SectionTag";
+import AnimatedHeading from "@/components/AnimatedHeading";
 import portfolio1 from "@/assets/portfolio-1.jpg";
 import portfolio2 from "@/assets/portfolio-2.jpg";
 import portfolio3 from "@/assets/portfolio-3.jpg";
@@ -41,14 +42,7 @@ const Portfolio = () => {
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-16">
           <SectionTag isVisible={isVisible}>{t("portfolio.tag")}</SectionTag>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={isVisible ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.1 }}
-            className="font-display text-3xl md:text-5xl font-bold mb-4"
-          >
-            {t("portfolio.title")}
-          </motion.h2>
+          <AnimatedHeading isVisible={isVisible}>{t("portfolio.title")}</AnimatedHeading>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
