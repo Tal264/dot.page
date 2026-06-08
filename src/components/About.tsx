@@ -44,9 +44,9 @@ const IgniteText = ({ text, delay = 0, className = "" }: { text: string; delay?:
 };
 
 const pillars = [
-  { titleKey: "about.mission.title", descKey: "about.mission.desc", color: "hsl(var(--primary))", icon: "◆" },
-  { titleKey: "about.vision.title", descKey: "about.vision.desc", color: "hsl(var(--secondary))", icon: "◉" },
-  { titleKey: "about.values.title", descKey: "about.values.desc", color: "hsl(var(--accent))", icon: "✦" },
+  { titleKey: "about.mission.title", descKey: "about.mission.desc", icon: "◆" },
+  { titleKey: "about.vision.title", descKey: "about.vision.desc", icon: "◉" },
+  { titleKey: "about.values.title", descKey: "about.values.desc", icon: "✦" },
 ];
 
 const About = () => {
@@ -65,16 +65,9 @@ const About = () => {
 
   return (
     <section id="about" className="relative overflow-hidden bg-background" ref={sectionRef}>
-      {/* Top section: header + ignite text + edge-to-edge video */}
-      <div className="pt-20 md:pt-32 pb-16 md:pb-24">
-        <div className="container mx-auto max-w-7xl px-4 md:px-8 mb-12 text-center flex flex-col items-center" ref={ref}>
-          <SectionTag isVisible={isVisible}>{t("about.tag")}</SectionTag>
-          <AnimatedHeading isVisible={isVisible}>{t("about.title")}</AnimatedHeading>
-        </div>
-
-        {/* Edge-to-edge video on the left, text on the right */}
+      <div className="pt-20 md:pt-32 pb-16 md:pb-24" ref={ref}>
         <div className="grid md:grid-cols-12 gap-10 md:gap-16 items-center">
-          {/* Video — flush to left edge, larger */}
+          {/* Video — flush to left edge */}
           <motion.div
             initial={{ opacity: 0, x: -60 }}
             animate={isVisible ? { opacity: 1, x: 0 } : {}}
@@ -92,13 +85,17 @@ const About = () => {
             />
           </motion.div>
 
-          {/* Text */}
+          {/* Heading + text on the right */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={isVisible ? { opacity: 1, x: 0 } : {}}
             transition={{ delay: 0.3, duration: 0.7 }}
             className="md:col-span-5 px-6 md:px-10 lg:pe-16"
           >
+            <div className="mb-6 flex flex-col items-start text-start">
+              <SectionTag isVisible={isVisible}>{t("about.tag")}</SectionTag>
+              <AnimatedHeading isVisible={isVisible}>{t("about.title")}</AnimatedHeading>
+            </div>
             <IgniteText
               key={lang}
               text={t("about.story")}
@@ -110,30 +107,7 @@ const About = () => {
       </div>
 
       {/* === New dynamic pillars section (replaces brick wall) === */}
-      <div ref={pillarsRef} className="relative overflow-hidden py-20 md:py-28">
-        {/* Animated background orbs */}
-        <motion.div
-          aria-hidden
-          className="absolute -top-32 -left-32 w-[28rem] h-[28rem] rounded-full opacity-30 blur-3xl"
-          style={{ background: "radial-gradient(circle, hsl(var(--primary)) 0%, transparent 70%)" }}
-          animate={{ x: [0, 60, 0], y: [0, 40, 0] }}
-          transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          aria-hidden
-          className="absolute -bottom-32 -right-32 w-[28rem] h-[28rem] rounded-full opacity-30 blur-3xl"
-          style={{ background: "radial-gradient(circle, hsl(var(--secondary)) 0%, transparent 70%)" }}
-          animate={{ x: [0, -50, 0], y: [0, -30, 0] }}
-          transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          aria-hidden
-          className="absolute top-1/3 left-1/2 w-[22rem] h-[22rem] rounded-full opacity-20 blur-3xl"
-          style={{ background: "radial-gradient(circle, hsl(var(--accent)) 0%, transparent 70%)" }}
-          animate={{ x: [0, 40, -40, 0], y: [0, -40, 30, 0] }}
-          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-        />
-
+      <div ref={pillarsRef} className="relative py-20 md:py-28">
         <div className="relative z-10 container mx-auto max-w-6xl px-4 md:px-8">
           <div className="grid md:grid-cols-3 gap-12 md:gap-16">
             {pillars.map((item, i) => (
@@ -148,8 +122,8 @@ const About = () => {
                 {/* Floating oversized number behind */}
                 <motion.span
                   aria-hidden
-                  className="absolute -top-10 start-0 font-display text-[7rem] md:text-[9rem] font-extrabold leading-none select-none pointer-events-none"
-                  style={{ color: item.color, opacity: 0.1 }}
+                  className="absolute -top-10 start-0 font-display text-[7rem] md:text-[9rem] font-extrabold leading-none select-none pointer-events-none text-primary"
+                  style={{ opacity: 0.1 }}
                   animate={{ y: [0, -10, 0] }}
                   transition={{ duration: 6 + i, repeat: Infinity, ease: "easeInOut" }}
                 >
@@ -158,8 +132,7 @@ const About = () => {
 
                 {/* Icon */}
                 <motion.div
-                  className="relative inline-block text-4xl md:text-5xl mb-5"
-                  style={{ color: item.color }}
+                  className="relative inline-block text-4xl md:text-5xl mb-5 text-primary"
                   animate={{ rotate: [0, 8, -8, 0], y: [0, -4, 0] }}
                   transition={{ duration: 6 + i * 0.5, repeat: Infinity, ease: "easeInOut" }}
                 >
@@ -173,8 +146,7 @@ const About = () => {
 
                 {/* Accent bar */}
                 <motion.span
-                  className="relative block h-[3px] rounded-full mb-4 mx-auto md:mx-0"
-                  style={{ background: item.color }}
+                  className="relative block h-[3px] rounded-full mb-4 mx-auto md:mx-0 bg-primary"
                   initial={{ width: 0 }}
                   whileInView={{ width: "3rem" }}
                   viewport={{ once: true }}
