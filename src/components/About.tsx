@@ -67,7 +67,7 @@ const About = () => {
     <section id="about" className="relative overflow-hidden bg-background" ref={sectionRef}>
       {/* Top section: header + ignite text + edge-to-edge video */}
       <div className="pt-20 md:pt-32 pb-16 md:pb-24">
-        <div className="container mx-auto max-w-7xl px-4 md:px-8 mb-12 text-center" ref={ref}>
+        <div className="container mx-auto max-w-7xl px-4 md:px-8 mb-12 text-center flex flex-col items-center" ref={ref}>
           <SectionTag isVisible={isVisible}>{t("about.tag")}</SectionTag>
           <AnimatedHeading isVisible={isVisible}>{t("about.title")}</AnimatedHeading>
         </div>
@@ -79,7 +79,7 @@ const About = () => {
             initial={{ opacity: 0, x: -60 }}
             animate={isVisible ? { opacity: 1, x: 0 } : {}}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="md:col-span-7 overflow-hidden shadow-2xl aspect-[4/3] md:aspect-[5/4] w-full md:rounded-r-3xl"
+            className="md:col-span-7 overflow-hidden shadow-2xl aspect-[4/3] md:aspect-[5/4] w-full"
           >
             <motion.video
               src={aboutVideo.url}
@@ -134,37 +134,23 @@ const About = () => {
           transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
         />
 
-        <div className="relative z-10 container mx-auto max-w-7xl px-4 md:px-8">
-          <div className="grid md:grid-cols-3 gap-6 md:gap-8">
+        <div className="relative z-10 container mx-auto max-w-6xl px-4 md:px-8">
+          <div className="grid md:grid-cols-3 gap-12 md:gap-16">
             {pillars.map((item, i) => (
-              <motion.article
+              <motion.div
                 key={item.titleKey}
-                initial={{ opacity: 0, y: 60 }}
+                initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
-                transition={{ delay: i * 0.15, duration: 0.7, ease: "easeOut" }}
-                whileHover={{ y: -8 }}
-                className="group relative rounded-3xl p-8 md:p-10 bg-card/70 backdrop-blur-xl border border-border/60 overflow-hidden shadow-xl hover:shadow-2xl transition-shadow"
+                transition={{ delay: i * 0.18, duration: 0.8, ease: "easeOut" }}
+                className="relative text-center md:text-start"
               >
-                {/* Animated gradient border on hover */}
-                <span
-                  aria-hidden
-                  className="pointer-events-none absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  style={{
-                    background: `linear-gradient(135deg, ${item.color} 0%, transparent 60%)`,
-                    WebkitMask:
-                      "linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)",
-                    WebkitMaskComposite: "xor",
-                    maskComposite: "exclude",
-                    padding: "1.5px",
-                  }}
-                />
-
-                {/* Big floating number */}
+                {/* Floating oversized number behind */}
                 <motion.span
-                  className="absolute -top-6 -right-4 font-display text-[8rem] md:text-[10rem] font-extrabold leading-none select-none"
-                  style={{ color: item.color, opacity: 0.12 }}
-                  animate={{ y: [0, -8, 0], rotate: [0, 2, 0] }}
+                  aria-hidden
+                  className="absolute -top-10 start-0 font-display text-[7rem] md:text-[9rem] font-extrabold leading-none select-none pointer-events-none"
+                  style={{ color: item.color, opacity: 0.1 }}
+                  animate={{ y: [0, -10, 0] }}
                   transition={{ duration: 6 + i, repeat: Infinity, ease: "easeInOut" }}
                 >
                   0{i + 1}
@@ -172,36 +158,34 @@ const About = () => {
 
                 {/* Icon */}
                 <motion.div
-                  className="relative inline-flex items-center justify-center w-14 h-14 rounded-2xl mb-6 text-2xl"
-                  style={{ background: `${item.color}`, color: "white" }}
-                  animate={{ rotate: [0, 6, -6, 0] }}
-                  transition={{ duration: 5 + i * 0.5, repeat: Infinity, ease: "easeInOut" }}
+                  className="relative inline-block text-4xl md:text-5xl mb-5"
+                  style={{ color: item.color }}
+                  animate={{ rotate: [0, 8, -8, 0], y: [0, -4, 0] }}
+                  transition={{ duration: 6 + i * 0.5, repeat: Infinity, ease: "easeInOut" }}
                 >
                   {item.icon}
                 </motion.div>
 
                 {/* Title */}
-                <h3
-                  className="relative font-display text-2xl md:text-3xl font-bold mb-3 text-foreground"
-                >
+                <h3 className="relative font-display text-2xl md:text-3xl font-bold mb-3 text-foreground">
                   {t(item.titleKey)}
                 </h3>
 
                 {/* Accent bar */}
                 <motion.span
-                  className="relative block h-[3px] rounded-full mb-4"
+                  className="relative block h-[3px] rounded-full mb-4 mx-auto md:mx-0"
                   style={{ background: item.color }}
                   initial={{ width: 0 }}
                   whileInView={{ width: "3rem" }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.15 + 0.4, duration: 0.6 }}
+                  transition={{ delay: i * 0.18 + 0.4, duration: 0.6 }}
                 />
 
                 {/* Description */}
                 <p className="relative text-muted-foreground text-base md:text-lg leading-relaxed">
                   {t(item.descKey)}
                 </p>
-              </motion.article>
+              </motion.div>
             ))}
           </div>
         </div>
