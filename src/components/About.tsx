@@ -44,9 +44,9 @@ const IgniteText = ({ text, delay = 0, className = "" }: { text: string; delay?:
 };
 
 const pillars = [
-  { titleKey: "about.mission.title", descKey: "about.mission.desc", color: "hsl(var(--primary))", icon: "◆" },
-  { titleKey: "about.vision.title", descKey: "about.vision.desc", color: "hsl(var(--secondary))", icon: "◉" },
-  { titleKey: "about.values.title", descKey: "about.values.desc", color: "hsl(var(--accent))", icon: "✦" },
+  { titleKey: "about.mission.title", descKey: "about.mission.desc", icon: "◆" },
+  { titleKey: "about.vision.title", descKey: "about.vision.desc", icon: "◉" },
+  { titleKey: "about.values.title", descKey: "about.values.desc", icon: "✦" },
 ];
 
 const About = () => {
