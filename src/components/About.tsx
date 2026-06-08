@@ -107,30 +107,7 @@ const About = () => {
       </div>
 
       {/* === New dynamic pillars section (replaces brick wall) === */}
-      <div ref={pillarsRef} className="relative overflow-hidden py-20 md:py-28">
-        {/* Animated background orbs */}
-        <motion.div
-          aria-hidden
-          className="absolute -top-32 -left-32 w-[28rem] h-[28rem] rounded-full opacity-30 blur-3xl"
-          style={{ background: "radial-gradient(circle, hsl(var(--primary)) 0%, transparent 70%)" }}
-          animate={{ x: [0, 60, 0], y: [0, 40, 0] }}
-          transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          aria-hidden
-          className="absolute -bottom-32 -right-32 w-[28rem] h-[28rem] rounded-full opacity-30 blur-3xl"
-          style={{ background: "radial-gradient(circle, hsl(var(--secondary)) 0%, transparent 70%)" }}
-          animate={{ x: [0, -50, 0], y: [0, -30, 0] }}
-          transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          aria-hidden
-          className="absolute top-1/3 left-1/2 w-[22rem] h-[22rem] rounded-full opacity-20 blur-3xl"
-          style={{ background: "radial-gradient(circle, hsl(var(--accent)) 0%, transparent 70%)" }}
-          animate={{ x: [0, 40, -40, 0], y: [0, -40, 30, 0] }}
-          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-        />
-
+      <div ref={pillarsRef} className="relative py-20 md:py-28">
         <div className="relative z-10 container mx-auto max-w-6xl px-4 md:px-8">
           <div className="grid md:grid-cols-3 gap-12 md:gap-16">
             {pillars.map((item, i) => (
@@ -145,8 +122,8 @@ const About = () => {
                 {/* Floating oversized number behind */}
                 <motion.span
                   aria-hidden
-                  className="absolute -top-10 start-0 font-display text-[7rem] md:text-[9rem] font-extrabold leading-none select-none pointer-events-none"
-                  style={{ color: item.color, opacity: 0.1 }}
+                  className="absolute -top-10 start-0 font-display text-[7rem] md:text-[9rem] font-extrabold leading-none select-none pointer-events-none text-primary"
+                  style={{ opacity: 0.1 }}
                   animate={{ y: [0, -10, 0] }}
                   transition={{ duration: 6 + i, repeat: Infinity, ease: "easeInOut" }}
                 >
@@ -155,8 +132,7 @@ const About = () => {
 
                 {/* Icon */}
                 <motion.div
-                  className="relative inline-block text-4xl md:text-5xl mb-5"
-                  style={{ color: item.color }}
+                  className="relative inline-block text-4xl md:text-5xl mb-5 text-primary"
                   animate={{ rotate: [0, 8, -8, 0], y: [0, -4, 0] }}
                   transition={{ duration: 6 + i * 0.5, repeat: Infinity, ease: "easeInOut" }}
                 >
@@ -170,8 +146,7 @@ const About = () => {
 
                 {/* Accent bar */}
                 <motion.span
-                  className="relative block h-[3px] rounded-full mb-4 mx-auto md:mx-0"
-                  style={{ background: item.color }}
+                  className="relative block h-[3px] rounded-full mb-4 mx-auto md:mx-0 bg-primary"
                   initial={{ width: 0 }}
                   whileInView={{ width: "3rem" }}
                   viewport={{ once: true }}
