@@ -79,7 +79,7 @@ const About = () => {
             initial={{ opacity: 0, x: -60 }}
             animate={isVisible ? { opacity: 1, x: 0 } : {}}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="md:col-span-7 overflow-hidden shadow-2xl aspect-[4/3] md:aspect-[5/4] w-full md:rounded-r-3xl"
+            className="md:col-span-7 overflow-hidden shadow-2xl aspect-[4/3] md:aspect-[5/4] w-full"
           >
             <motion.video
               src={aboutVideo.url}
