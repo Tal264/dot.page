@@ -65,16 +65,9 @@ const About = () => {
 
   return (
     <section id="about" className="relative overflow-hidden bg-background" ref={sectionRef}>
-      {/* Top section: header + ignite text + edge-to-edge video */}
-      <div className="pt-20 md:pt-32 pb-16 md:pb-24">
-        <div className="container mx-auto max-w-7xl px-4 md:px-8 mb-12 text-center flex flex-col items-center" ref={ref}>
-          <SectionTag isVisible={isVisible}>{t("about.tag")}</SectionTag>
-          <AnimatedHeading isVisible={isVisible}>{t("about.title")}</AnimatedHeading>
-        </div>
-
-        {/* Edge-to-edge video on the left, text on the right */}
+      <div className="pt-20 md:pt-32 pb-16 md:pb-24" ref={ref}>
         <div className="grid md:grid-cols-12 gap-10 md:gap-16 items-center">
-          {/* Video — flush to left edge, larger */}
+          {/* Video — flush to left edge */}
           <motion.div
             initial={{ opacity: 0, x: -60 }}
             animate={isVisible ? { opacity: 1, x: 0 } : {}}
@@ -92,13 +85,17 @@ const About = () => {
             />
           </motion.div>
 
-          {/* Text */}
+          {/* Heading + text on the right */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={isVisible ? { opacity: 1, x: 0 } : {}}
             transition={{ delay: 0.3, duration: 0.7 }}
             className="md:col-span-5 px-6 md:px-10 lg:pe-16"
           >
+            <div className="mb-6 flex flex-col items-start text-start">
+              <SectionTag isVisible={isVisible}>{t("about.tag")}</SectionTag>
+              <AnimatedHeading isVisible={isVisible}>{t("about.title")}</AnimatedHeading>
+            </div>
             <IgniteText
               key={lang}
               text={t("about.story")}
