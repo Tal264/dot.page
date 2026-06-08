@@ -67,7 +67,7 @@ const About = () => {
     <section id="about" className="relative overflow-hidden bg-background" ref={sectionRef}>
       {/* Top section: header + ignite text + edge-to-edge video */}
       <div className="pt-20 md:pt-32 pb-16 md:pb-24">
-        <div className="container mx-auto max-w-7xl px-4 md:px-8 mb-12 text-center" ref={ref}>
+        <div className="container mx-auto max-w-7xl px-4 md:px-8 mb-12 text-center flex flex-col items-center" ref={ref}>
           <SectionTag isVisible={isVisible}>{t("about.tag")}</SectionTag>
           <AnimatedHeading isVisible={isVisible}>{t("about.title")}</AnimatedHeading>
         </div>
