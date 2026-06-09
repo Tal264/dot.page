@@ -66,7 +66,8 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="font-display font-normal text-7xl sm:text-8xl md:text-9xl text-[#1a1a1a] dark:text-white leading-none tracking-tight"
+          style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+          className="font-normal text-7xl sm:text-8xl md:text-9xl text-[#1a1a1a] dark:text-white leading-none tracking-tight"
         >
           dot<span style={{ color: "#E05A3A" }}>.</span>page
         </motion.h1>
@@ -75,7 +76,8 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="mt-10 font-display text-2xl sm:text-3xl md:text-4xl min-h-[1.4em] text-[#1a1a1a] dark:text-white/90"
+          style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+          className="mt-10 text-2xl sm:text-3xl md:text-4xl min-h-[1.4em] text-[#1a1a1a] dark:text-white/90"
         >
           <Typewriter />
         </motion.div>
