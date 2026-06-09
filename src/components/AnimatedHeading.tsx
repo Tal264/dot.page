@@ -74,13 +74,6 @@ const AnimatedHeading = ({
           </motion.span>
         )}
       </motion.h2>
-      <motion.span
-        aria-hidden
-        initial={{ scaleX: 0 }}
-        animate={ruleControls}
-        style={{ transformOrigin: "left" }}
-        className="block h-[2px] w-16 mx-auto bg-primary rounded-full"
-      />
     </div>
   );
 };
