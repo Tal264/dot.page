@@ -20,7 +20,6 @@ const AnimatedHeading = ({
   delay = 0.1,
 }: AnimatedHeadingProps) => {
   const controls = useAnimation();
-  const ruleControls = useAnimation();
 
   const text = typeof children === "string" ? children : "";
   const words = text ? text.split(" ") : null;
@@ -28,12 +27,8 @@ const AnimatedHeading = ({
   useEffect(() => {
     if (isVisible) {
       controls.start("visible");
-      ruleControls.start({
-        scaleX: 1,
-        transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: delay + 0.25 },
-      });
     }
-  }, [isVisible, controls, ruleControls, delay]);
+  }, [isVisible, controls]);
 
   const container = {
     hidden: {},
