@@ -65,7 +65,7 @@ const About = () => {
 
   return (
     <section id="about" className="relative overflow-hidden bg-background" ref={sectionRef}>
-      <div className="pt-20 md:pt-32 pb-16 md:pb-24" ref={ref}>
+      <div className="md:pt-32 pb-16 md:pb-24" ref={ref}>
         <div className="grid md:grid-cols-12 gap-10 md:gap-16 items-center">
           {/* Video — flush to left edge */}
           <motion.div
