@@ -60,7 +60,7 @@ const Typewriter = () => {
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden section-padding pt-32 bg-[#f5f5f3] dark:bg-[#1e1e1e]">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden section-padding pt-32 pb-0 md:pb-0 bg-[#f5f5f3] dark:bg-[#1e1e1e]">
       <div className="container mx-auto relative z-10 text-center flex flex-col items-center">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
