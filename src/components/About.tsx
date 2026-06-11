@@ -117,7 +117,8 @@ const About = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ delay: i * 0.18, duration: 0.8, ease: "easeOut" }}
-                className="relative text-center md:text-start"
+                whileHover={{ scale: 1.04 }}
+                className="relative text-center md:text-start cursor-default"
               >
                 {/* Floating oversized number behind */}
                 <motion.span
