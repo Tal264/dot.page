@@ -64,7 +64,7 @@ const About = () => {
   const videoY = useTransform(scrollYProgress, [0, 1], ["0%", "-15%"]);
 
   return (
-    <section id="about" className="relative overflow-hidden bg-background" ref={sectionRef}>
+    <section id="about" className="relative overflow-hidden bg-background scroll-mt-24 md:scroll-mt-32" ref={sectionRef}>
       <div className="pb-16 md:pb-24" ref={ref}>
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           {/* Video — flush to left edge */}
