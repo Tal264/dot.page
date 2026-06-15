@@ -72,7 +72,7 @@ const About = () => {
             initial={{ opacity: 0, x: -60 }}
             animate={isVisible ? { opacity: 1, x: 0 } : {}}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="lg:col-span-7 overflow-hidden shadow-2xl aspect-[4/3] lg:aspect-[5/4] w-full"
+            className="lg:col-span-6 overflow-hidden shadow-2xl aspect-[4/3] lg:aspect-[5/4] w-full"
           >
             <motion.video
               src={aboutVideo.url}
@@ -90,7 +90,7 @@ const About = () => {
             initial={{ opacity: 0, x: 40 }}
             animate={isVisible ? { opacity: 1, x: 0 } : {}}
             transition={{ delay: 0.3, duration: 0.7 }}
-            className="lg:col-span-5 px-6 md:px-10 lg:pe-16 pt-12 md:pt-16 lg:pt-20"
+            className="lg:col-span-6 px-6 md:px-10 lg:pe-12 pt-12 md:pt-16 lg:pt-20"
           >
             <div className="mb-6 flex flex-col items-start text-start">
               <SectionTag isVisible={isVisible}>{t("about.tag")}</SectionTag>
