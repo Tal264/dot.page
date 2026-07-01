@@ -7,6 +7,9 @@ import { componentTagger } from "lovable-tagger";
 export default defineConfig(({ mode }) => ({
   base: "/",
 
+  // Explicitly tells Vite to treat media files as static assets
+  assetsInclude: ["**/*.mp4", "**/*.webm", "**/*.ogv"],
+
   server: {
     host: "::",
     port: 8080,
