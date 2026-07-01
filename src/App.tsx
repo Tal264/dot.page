@@ -48,12 +48,13 @@ const App = () => (
             <Toaster />
             <Sonner />
 
-            <BrowserRouter basename="/dot.page">
+            <BrowserRouter>
               <Routes>
                 <Route path="/" element={<Index />} />
-                <Route path="*" element={<NotFound />} />
                 <Route path="/privacy" element={<Privacy />} />
                 <Route path="/terms" element={<Terms />} />
+                {/* Fallback route kept at the very bottom */}
+                <Route path="*" element={<NotFound />} />
               </Routes>
 
               {/* WhatsApp widget OUTSIDE routes so it appears on all pages */}
