@@ -205,7 +205,7 @@ export const translations: Record<Language, Record<string, string>> = {
     "testimonials.title": "מה הלקוחות שלנו אומרים",
     "testimonials.subtitle": "אל תסתמכו רק על המילה שלנו — שמעו מהעסקים שעזרנו להם לצמוח.",
 
-    // Pricing
+        // Pricing
     "pricing.tag": "מחירים",
     "pricing.title": "מחירים פשוטים ושקופים",
     "pricing.subtitle": "בחרו את התוכנית שמתאימה לצרכים שלכם. ללא עלויות נסתרות.",
@@ -217,23 +217,28 @@ export const translations: Record<Language, Record<string, string>> = {
     "pricing.cta": "התחל עכשיו",
     "pricing.ctaPopular": "בחר תוכנית",
     "pricing.ctaEnterprise": "צור קשר",
-    "pricing.starter.f1": "עמוד נחיתה רספונסיבי",
+
+    "pricing.starter.f1": "עמוד נחיתה",
     "pricing.starter.f2": "עיצוב מותאם למובייל",
-    "pricing.starter.f3": "הגדרת SEO בסיסית",
     "pricing.starter.f4": "טופס יצירת קשר",
+    "pricing.starter.f3": "תפריט נגישות",
     "pricing.starter.f5": "סבב תיקונים אחד",
+
     "pricing.pro.f1": "אתר רספונסיבי עד 5 עמודים",
     "pricing.pro.f2": "עיצוב מותאם למובייל",
-    "pricing.pro.f3": "אופטימיזציית SEO בסיסית",
     "pricing.pro.f4": "טופס יצירת קשר",
-    "pricing.pro.f5": "3 סבבי תיקונים",
+    "pricing.pro.f3": "אופטימיזציית SEO בסיסית",
+    "pricing.pro.f5": "תפריט נגישות",
+    "pricing.pro.f6": "3 סבבי תיקונים",
+
     "pricing.ent.f1": "עמודים ללא הגבלה",
     "pricing.ent.f2": "חבילת מיתוג מלאה",
-    "pricing.ent.f3": "עיצוב מותאם למובייל",
-    "pricing.ent.f4": "תמיכה בעדיפות 24/7",
-    "pricing.ent.f5": "אופטימיזציית ביצועים",
-    "pricing.ent.f6": "אופטימיזציית SEO מתקדמת",
-    "pricing.ent.f7": "10 סבבי תיקונים",
+    "pricing.ent.f4": "עיצוב מותאם למובייל",
+    "pricing.ent.f3": "תפריט נגישות",
+    "pricing.ent.f6": "אופטימיזציית ביצועים",
+    "pricing.ent.f7": "אופטימיזציית SEO מתקדמת",
+    "pricing.ent.f5": "תמיכה בעדיפות 24/7",
+    "pricing.ent.f8": "10 סבבי תיקונים",    
 
     // Contact
     "contact.tag": "צור קשר",
@@ -241,6 +246,7 @@ export const translations: Record<Language, Record<string, string>> = {
     "contact.subtitle": "מוכנים להתחיל את הפרויקט שלכם? פנו אלינו ונדון בחזון שלכם.",
     "contact.name": "השם שלך",
     "contact.email": "כתובת אימייל",
+    "contact.phone": "מספר טלפון",
     "contact.message": "ספרו לנו על הפרויקט שלכם",
     "contact.send": "שלח הודעה",
     "contact.info.title": "פרטי התקשרות",

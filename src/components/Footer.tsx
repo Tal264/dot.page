@@ -1,10 +1,11 @@
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useTheme } from "@/contexts/ThemeContext";
-import logoImg from "@/assets/dot-page-logo.svg";
-import logoImgDark from "@/assets/dot-page-logo-dark.svg";
+import logoImg from "@/assets/dot-page-logo-cropped.svg";
+import logoImgDark from "@/assets/dot-page-logo-dark-cropped.svg";
 import { ArrowUp, Github, Facebook, Linkedin, Instagram } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const { t } = useLanguage();
@@ -22,25 +23,35 @@ const Footer = () => {
   return (
     <footer className="border-t border-border bg-card/50">
       <div className="container mx-auto max-w-6xl section-padding py-16">
+
+        {/* MAIN GRID */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+
           {/* Brand */}
           <div>
             <div className="mb-4">
-              <img src={theme === "dark" ? logoImgDark : logoImg} alt="dot.page web studio" className="h-20 w-auto" />
+              <img
+                src={theme === "dark" ? logoImgDark : logoImg}
+                alt="dot.page web studio"
+                className="h-20 w-auto"
+              />
             </div>
-
-            <p className="text-sm text-muted-foreground leading-relaxed">{t("footer.desc")}</p>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              {t("footer.desc")}
+            </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-display font-semibold mb-4">{t("footer.quickLinks")}</h4>
+            <h4 className="font-display font-semibold mb-4">
+              {t("footer.quickLinks")}
+            </h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><a href="#about" className="hover:text-foreground transition-colors">{t("nav.about")}</a></li>
-              <li><a href="#services" className="hover:text-foreground transition-colors">{t("nav.services")}</a></li>
-              <li><a href="#portfolio" className="hover:text-foreground transition-colors">{t("nav.portfolio")}</a></li>
-              <li><a href="#pricing" className="hover:text-foreground transition-colors">{t("nav.pricing")}</a></li>
-              <li><a href="#contact" className="hover:text-foreground transition-colors">{t("nav.contact")}</a></li>
+              <li><a href="#about" className="hover:text-foreground">{t("nav.about")}</a></li>
+              <li><a href="#services" className="hover:text-foreground">{t("nav.services")}</a></li>
+              <li><a href="#portfolio" className="hover:text-foreground">{t("nav.portfolio")}</a></li>
+              <li><a href="#pricing" className="hover:text-foreground">{t("nav.pricing")}</a></li>
+              <li><a href="#contact" className="hover:text-foreground">{t("nav.contact")}</a></li>
             </ul>
           </div>
 
@@ -84,7 +95,10 @@ const Footer = () => {
 
           {/* Newsletter */}
           <div>
-            <h4 className="font-display font-semibold mb-4">{t("footer.newsletter")}</h4>
+            <h4 className="font-display font-semibold mb-4">
+              {t("footer.newsletter")}
+            </h4>
+
             <form onSubmit={handleSubscribe} className="flex gap-2">
               <input
                 type="email"
@@ -94,22 +108,47 @@ const Footer = () => {
                 placeholder={t("footer.emailPlaceholder")}
                 className="flex-1 px-4 py-2 rounded-lg bg-background border border-border text-sm focus:outline-none focus:border-primary/50 text-foreground placeholder:text-muted-foreground"
               />
-              <button type="submit" className="gradient-bg px-4 py-2 rounded-lg text-sm font-semibold text-primary-foreground hover:opacity-90 transition-opacity">
+
+              <button
+                type="submit"
+                className="gradient-bg px-4 py-2 rounded-lg text-sm font-semibold text-primary-foreground hover:opacity-90 transition-opacity"
+              >
                 {t("footer.subscribe")}
               </button>
             </form>
           </div>
         </div>
 
+        {/* BOTTOM BAR */}
         <div className="flex flex-col sm:flex-row items-center justify-between pt-8 border-t border-border gap-4">
           <p className="text-xs text-muted-foreground">
             © {new Date().getFullYear()} dot.page. {t("footer.rights")}
           </p>
 
-          <button onClick={scrollTop} className="p-2 rounded-full border border-border hover:border-primary/50 transition-colors" aria-label="Back to top">
+          <button
+            onClick={scrollTop}
+            className="p-2 rounded-full border border-border hover:border-primary/50 transition-colors"
+            aria-label="Back to top"
+          >
             <ArrowUp className="w-4 h-4" />
           </button>
         </div>
+
+        {/* LEGAL LINKS (FIXED) */}
+            <div className="w-full flex justify-center mt-6">
+          <div className="flex flex-row items-center gap-6 text-sm text-muted-foreground">
+            <Link to="/privacy" className="hover:underline whitespace-nowrap">
+              מדיניות פרטיות
+            </Link>
+
+            <span className="text-muted-foreground/50">|</span>
+
+            <Link to="/terms" className="hover:underline whitespace-nowrap">
+              תנאי שימוש
+            </Link>
+          </div>
+        </div>
+
       </div>
     </footer>
   );

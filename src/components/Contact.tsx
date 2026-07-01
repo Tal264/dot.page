@@ -70,7 +70,8 @@ const Contact = () => {
 
         <div className="grid md:grid-cols-5 gap-12">
           {/* Form */}
-          <motion.form
+          <motion.form 
+            dir="rtl"
             initial={{ opacity: 0, x: -30 }}
             animate={isVisible ? { opacity: 1, x: 0 } : {}}
             transition={{ delay: 0.3 }}
@@ -104,8 +105,9 @@ const Contact = () => {
                 onChange={(e) =>
                   setForm({ ...form, phone: e.target.value })
                 }
-                placeholder="Phone (optional)"
+                placeholder={t("contact.phone")}
                 className="w-full px-5 py-3.5 rounded-xl bg-card border border-border focus:border-primary/50 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all text-foreground placeholder:text-muted-foreground"
+                style={{ direction: "rtl" }}
               />
             <textarea
               value={form.message}
@@ -169,14 +171,17 @@ const Contact = () => {
             </div>
 
             <div className="pt-4">
-              <a
-                href="#"
-                className="flex items-center justify-center gap-2 w-full py-3 rounded-full border border-border hover:border-primary/50 font-semibold text-sm transition-all"
-              >
-                <Calendar className="w-4 h-4" />
-                {t("contact.bookCall")}
-              </a>
-            </div>
+                <a
+                  href="tel:+972502345005"
+                  className="flex items-center justify-center gap-2 w-full py-3 rounded-full border border-border hover:border-primary/50 font-semibold text-sm transition-all"
+                >
+                  <Calendar className="w-4 h-4" />
+                  התקשר לייעוץ חינם
+                </a>
+              </div>
+
+
+
           </motion.div>
         </div>
       </div>

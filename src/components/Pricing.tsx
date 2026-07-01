@@ -16,14 +16,14 @@ const plans = [
   {
     nameKey: "pricing.professional",
     price: "₪3,999",
-    features: ["pricing.pro.f1", "pricing.pro.f2", "pricing.pro.f3", "pricing.pro.f4", "pricing.pro.f5"],
+    features: ["pricing.pro.f1", "pricing.pro.f2", "pricing.pro.f3", "pricing.pro.f4", "pricing.pro.f5", "pricing.pro.f6"],
     ctaKey: "pricing.ctaPopular",
     popular: true,
   },
   {
     nameKey: "pricing.enterprise",
     price: "₪9,999",
-    features: ["pricing.ent.f1", "pricing.ent.f2", "pricing.ent.f3", "pricing.ent.f4", "pricing.ent.f5", "pricing.ent.f6", "pricing.ent.f7"],
+    features: ["pricing.ent.f1", "pricing.ent.f2", "pricing.ent.f3", "pricing.ent.f4", "pricing.ent.f5", "pricing.ent.f6", "pricing.ent.f7", "pricing.ent.f8"],
     ctaKey: "pricing.ctaEnterprise",
     popular: false,
   },
