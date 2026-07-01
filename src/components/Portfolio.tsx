@@ -6,21 +6,21 @@ import { ExternalLink } from "lucide-react";
 import SectionTag from "@/components/SectionTag";
 import AnimatedHeading from "@/components/AnimatedHeading";
 import portfolio1 from "@/assets/portfolio-1.jpg";
-import portfolio2 from "@/assets/portfolio-2.jpg";
-import portfolio3 from "@/assets/portfolio-3.jpg";
+import portfolio2 from "@/assets/nutrition.png";
+import portfolio3 from "@/assets/lawyer-meeting.png";
 import portfolio4 from "@/assets/portfolio-4.jpg";
-import portfolio5 from "@/assets/portfolio-5.jpg";
-import portfolio6 from "@/assets/portfolio-6.jpg";
+import portfolio5 from "@/assets/girl-swinging.webp";
+import portfolio6 from "@/assets/office.png";
 
 type Category = "all" | "ecommerce" | "landing" | "webapps";
 
 const projects = [
-  { id: 1, cat: "ecommerce" as const, title: "LuxeShop", desc: "Premium fashion e-commerce", img: portfolio1 },
-  { id: 2, cat: "landing" as const, title: "GreenTech", desc: "SaaS landing page", img: portfolio2 },
-  { id: 3, cat: "webapps" as const, title: "TaskFlow", desc: "Project management app", img: portfolio3 },
+  { id: 1, cat: "ecommerce" as const, title: "LuxeShop", desc: "Premium fashion e-commerce", img: portfolio1  },
+  { id: 2, cat: "landing" as const, title: "דיאטנית קלינית ומדריכת כושר", desc: "אורח חיים בריא", img: portfolio2 , url: "https://yaelmoyal.page.gd/wp/"},
+  { id: 3, cat: "landing" as const, title: "עורכת דין לענייני פונדקאות", desc: "שירות משפטי", img: portfolio3, url: "https://dotpagestudio.wixstudio.com/gal-law" },
   { id: 4, cat: "ecommerce" as const, title: "FoodieBox", desc: "Meal kit subscription", img: portfolio4 },
-  { id: 5, cat: "landing" as const, title: "CryptoVault", desc: "Fintech landing page", img: portfolio5 },
-  { id: 6, cat: "webapps" as const, title: "HealthPulse", desc: "Fitness tracking dashboard", img: portfolio6 },
+  { id: 5, cat: "webapps" as const, title: "עמותת חזקת הגיל הרך = טובת הילד", desc: "שירותים חברתיים לנשים וילדים", img: portfolio5, url: "https://hezkat-hagil-harach.web.app/" },
+  { id: 6, cat: "landing" as const, title: "ייעוץ משכנתאות", desc: "שירותי ייעוץ פיננסי", img: portfolio6, url: "https://tal264.github.io/mortgage-advisory/" },
 ];
 
 const Portfolio = () => {
@@ -82,6 +82,7 @@ const Portfolio = () => {
               <motion.div
                 key={project.id}
                 layout
+                onClick={() => window.open(project.url, "_blank")}
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}

@@ -5,37 +5,37 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 import SectionTag from "@/components/SectionTag";
 import AnimatedHeading from "@/components/AnimatedHeading";
-import heroVideo from "@/assets/hero-video.mp4.asset.json";
+import heroFrame from "@/assets/hero-frame.jpg";
 
 
 const testimonials = [
   {
-    name: "Sarah Johnson",
-    company: "LuxeShop CEO",
-    quote: "WebStorey transformed our online presence completely. Our conversions increased by 340% within the first month of launch.",
+    name: "יעל מויאל",
+    company: "דיאטנית קלינית ומדריכת כושר",
+    quote: "שינו לי את כל הנוכחות הדיגיטלית. בתוך חודש בלבד ראיתי עלייה של יותר מ־300% לקוחות חדשים מהאתר.",
     rating: 5,
-    avatar: "SJ",
+    avatar: "YM",
   },
   {
-    name: "David Chen",
-    company: "TaskFlow Founder",
-    quote: "The team at WebStorey doesn't just build websites — they craft experiences. The attention to detail is unmatched.",
+    name: "יואב ברקוביץ",
+    company: "מייסד, YB ייעוץ משכנתאות",
+    quote: "זו לא רק בניית אתר — זו חוויה שלמה. dot.page הצליחו להבין אותנו לעומק ולהפוך את זה למוצר מדויק שעובד באמת.",
     rating: 5,
-    avatar: "DC",
+    avatar: "YB",
   },
   {
-    name: "Emily Torres",
-    company: "GreenTech CMO",
-    quote: "Working with WebStorey was seamless from start to finish. They understood our vision and executed it perfectly.",
+    name: "מיכל אברהם",
+    company: "CMO, GreenTech",
+    quote: "העבודה עם dot.page הייתה חלקה ומקצועית מהרגע הראשון. הם הצליחו לתרגם את החזון שלנו לאתר נקי, מהיר ומדויק.",
     rating: 5,
-    avatar: "ET",
+    avatar: "MA",
   },
   {
-    name: "Michael Park",
-    company: "CryptoVault CTO",
-    quote: "Fast, reliable, and incredibly creative. WebStorey delivered a website that exceeded all our expectations.",
+    name: "אורי פרץ",
+    company: "CTO, CryptoVault",
+    quote: "מהיר, יצירתי ומדויק. dot.page סיפקו לנו אתר שעבר את כל הציפיות שלנו בכמה רמות.",
     rating: 5,
-    avatar: "MP",
+    avatar: "UP",
   },
 ];
 
@@ -54,16 +54,13 @@ const Testimonials = () => {
 
   return (
     <section className="section-padding relative overflow-hidden" ref={ref}>
-      {/* Background video */}
+      {/* Background image */}
       <div className="absolute inset-0">
-        <video
-          src={heroVideo.url}
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="w-full h-full object-cover"
-        />
+       <img
+            src={heroFrame}
+            className="w-full h-full object-cover"
+            alt="Background"
+          />
         <div className="absolute inset-0 bg-background/70 backdrop-blur-sm" />
       </div>
 

@@ -2,7 +2,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useRef } from "react";
-import aboutVideo from "@/assets/about-video.mp4.asset.json";
+import aboutVideo from "@/assets/about-video.mp4";
 import SectionTag from "@/components/SectionTag";
 import AnimatedHeading from "@/components/AnimatedHeading";
 
@@ -75,7 +75,7 @@ const About = () => {
             className="lg:col-span-6 overflow-hidden shadow-2xl aspect-[4/3] lg:aspect-[5/4] w-full"
           >
             <motion.video
-              src={aboutVideo.url}
+              src={aboutVideo}
               autoPlay
               muted
               loop

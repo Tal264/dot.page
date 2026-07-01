@@ -2,7 +2,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { useTheme } from "@/contexts/ThemeContext";
 import logoImg from "@/assets/dot-page-logo.svg";
 import logoImgDark from "@/assets/dot-page-logo-dark.svg";
-import { ArrowUp, Github, Twitter, Linkedin, Instagram } from "lucide-react";
+import { ArrowUp, Github, Facebook, Linkedin, Instagram } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -46,12 +46,34 @@ const Footer = () => {
 
           {/* Connect */}
           <div>
-            <h4 className="font-display font-semibold mb-4">{t("footer.connect")}</h4>
+            <h4 className="font-display font-semibold mb-4">
+              {t("footer.connect")}
+            </h4>
+
             <div className="flex gap-3">
-              {[Twitter, Instagram, Linkedin, Github].map((Icon, i) => (
+              {[
+                {
+                  Icon: Facebook,
+                  url: "https://www.facebook.com/profile.php?id=61591008294644",
+                },
+                {
+                  Icon: Instagram,
+                  url: "https://www.instagram.com/dot.page_studio/",
+                },
+                {
+                  Icon: Linkedin,
+                  url: "https://www.linkedin.com/company/dot-page/",
+                },
+                {
+                  Icon: Github,
+                  url: "https://github.com/Tal264/dot.page",
+                },
+              ].map(({ Icon, url }, i) => (
                 <a
                   key={i}
-                  href="#"
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-9 h-9 rounded-lg border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/50 transition-all"
                 >
                   <Icon className="w-4 h-4" />
