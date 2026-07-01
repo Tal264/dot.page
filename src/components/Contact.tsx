@@ -15,6 +15,7 @@ const Contact = () => {
   const [form, setForm] = useState({
     name: "",
     email: "",
+    phone: "",
     message: "",
   });
 
@@ -31,6 +32,7 @@ const Contact = () => {
         {
           from_name: form.name,
           from_email: form.email,
+          from_phone: form.phone,
           message: form.message,
         },
         "DehmDDlnnGPx3E4gt"
@@ -38,7 +40,7 @@ const Contact = () => {
 
       toast.success("Message sent! We'll get back to you soon.");
 
-      setForm({ name: "", email: "", message: "" });
+      setForm({ name: "", email: "", phone: "", message: "" });
     } catch (error) {
       console.error(error);
       toast.error("Failed to send message. Please try again.");
@@ -96,7 +98,15 @@ const Contact = () => {
               placeholder={t("contact.email")}
               className="w-full px-5 py-3.5 rounded-xl bg-card border border-border focus:border-primary/50 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all text-foreground placeholder:text-muted-foreground"
             />
-
+              <input
+                type="tel"
+                value={form.phone}
+                onChange={(e) =>
+                  setForm({ ...form, phone: e.target.value })
+                }
+                placeholder="Phone (optional)"
+                className="w-full px-5 py-3.5 rounded-xl bg-card border border-border focus:border-primary/50 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all text-foreground placeholder:text-muted-foreground"
+              />
             <textarea
               value={form.message}
               onChange={(e) =>
