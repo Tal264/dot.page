@@ -17,7 +17,7 @@ const queryClient = new QueryClient();
 /* WhatsApp Floating Widget */
 const WhatsAppWidget = () => {
   const message = encodeURIComponent(
-    "היי! הגעתי דרך האתר שלכם ואשמח לקבל מידע נוסף על השירותים שלכם"
+    "היי! הגעתי דרך האתר שלכם ואשמח לקבל מידע נוסף על השירותים שלכם."
   );
 
   return (

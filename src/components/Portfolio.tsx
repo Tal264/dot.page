@@ -15,12 +15,12 @@ import portfolio6 from "@/assets/office.png";
 type Category = "all" | "ecommerce" | "landing" | "webapps";
 
 const projects = [
-  { id: 1, cat: "ecommerce" as const, title: "LuxeShop", desc: "Premium fashion e-commerce", img: portfolio1  },
-  { id: 2, cat: "landing" as const, title: "דיאטנית קלינית ומדריכת כושר", desc: "אורח חיים בריא", img: portfolio2 , url: "https://yaelmoyal.page.gd/wp/"},
-  { id: 3, cat: "landing" as const, title: "עורכת דין לענייני פונדקאות", desc: "שירות משפטי", img: portfolio3, url: "https://dotpagestudio.wixstudio.com/gal-law" },
-  { id: 4, cat: "ecommerce" as const, title: "FoodieBox", desc: "Meal kit subscription", img: portfolio4 },
-  { id: 5, cat: "webapps" as const, title: "עמותת חזקת הגיל הרך = טובת הילד", desc: "שירותים חברתיים לנשים וילדים", img: portfolio5, url: "https://hezkat-hagil-harach.web.app/" },
-  { id: 6, cat: "landing" as const, title: "ייעוץ משכנתאות", desc: "שירותי ייעוץ פיננסי", img: portfolio6, url: "https://tal264.github.io/mortgage-advisory/" },
+  { id: 1, cat: "ecommerce" as const, img: portfolio1, url: "" },
+  { id: 2, cat: "landing" as const, img: portfolio2, url: "https://yaelmoyal.page.gd/wp/" },
+  { id: 3, cat: "landing" as const, img: portfolio3, url: "https://dotpagestudio.wixstudio.com/gal-law" },
+  { id: 4, cat: "ecommerce" as const, img: portfolio4, url: "" },
+  { id: 5, cat: "webapps" as const, img: portfolio5, url: "https://hezkat-hagil-harach.web.app/" },
+  { id: 6, cat: "landing" as const, img: portfolio6, url: "https://tal264.github.io/mortgage-advisory/" },
 ];
 
 const Portfolio = () => {
@@ -35,14 +35,31 @@ const Portfolio = () => {
     { key: "webapps", label: t("portfolio.webapps") },
   ];
 
-  const filtered = filter === "all" ? projects : projects.filter((p) => p.cat === filter);
+  const filtered =
+    filter === "all"
+      ? projects
+      : projects.filter((p) => p.cat === filter);
+
+  const getTitle = (id: number) =>
+    t(`portfolio.projects.${id}.title`);
+
+  const getDesc = (id: number) =>
+    t(`portfolio.projects.${id}.desc`);
 
   return (
     <section id="portfolio" className="section-padding" ref={ref}>
       <div className="container mx-auto max-w-6xl">
+
+        {/* Header */}
         <div className="text-center mb-16">
-          <SectionTag isVisible={isVisible}>{t("portfolio.tag")}</SectionTag>
-          <AnimatedHeading isVisible={isVisible}>{t("portfolio.title")}</AnimatedHeading>
+          <SectionTag isVisible={isVisible}>
+            {t("portfolio.tag")}
+          </SectionTag>
+
+          <AnimatedHeading isVisible={isVisible}>
+            {t("portfolio.title")}
+          </AnimatedHeading>
+
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
@@ -53,7 +70,7 @@ const Portfolio = () => {
           </motion.p>
         </div>
 
-        {/* Filter tabs */}
+        {/* Filters */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={isVisible ? { opacity: 1 } : {}}
@@ -82,36 +99,39 @@ const Portfolio = () => {
               <motion.div
                 key={project.id}
                 layout
-                onClick={() => window.open(project.url, "_blank")}
+                onClick={() => project.url && window.open(project.url, "_blank")}
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.3 }}
                 className="group relative rounded-xl overflow-hidden border border-border bg-card hover-glow cursor-pointer"
               >
+                {/* Image */}
                 <div className="h-48 relative overflow-hidden">
                   <motion.img
                     src={project.img}
-                    alt={project.title}
+                    alt={getTitle(project.id)}
                     className="w-full h-full object-cover"
                     whileHover={{ scale: 1.1 }}
                     transition={{ duration: 0.6 }}
                   />
+
                   <div className="absolute inset-0 bg-background/0 group-hover:bg-background/60 transition-colors duration-300 flex items-center justify-center">
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      whileHover={{ opacity: 1, y: 0 }}
-                      className="opacity-0 group-hover:opacity-100 transition-opacity"
-                    >
-                      <span className="flex items-center gap-2 px-4 py-2 rounded-full gradient-bg text-sm font-semibold text-primary-foreground">
-                        {t("portfolio.viewProject")} <ExternalLink className="w-3.5 h-3.5" />
-                      </span>
-                    </motion.div>
+                    <span className="opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-2 px-4 py-2 rounded-full gradient-bg text-sm font-semibold text-primary-foreground">
+                      {t("portfolio.viewProject")}{" "}
+                      <ExternalLink className="w-3.5 h-3.5" />
+                    </span>
                   </div>
                 </div>
+
+                {/* Text (LANGUAGE ONLY HERE) */}
                 <div className="p-5">
-                  <h3 className="font-display font-semibold text-lg">{project.title}</h3>
-                  <p className="text-sm text-muted-foreground mt-1">{project.desc}</p>
+                  <h3 className="font-display font-semibold text-lg">
+                    {getTitle(project.id)}
+                  </h3>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    {getDesc(project.id)}
+                  </p>
                 </div>
               </motion.div>
             ))}
