@@ -5,7 +5,7 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { ExternalLink } from "lucide-react";
 import SectionTag from "@/components/SectionTag";
 import AnimatedHeading from "@/components/AnimatedHeading";
-import portfolio1 from "@/assets/portfolio-1.jpg";
+import portfolio1 from "@/assets/beauty-hero.jpg";
 import portfolio2 from "@/assets/nutrition.png";
 import portfolio3 from "@/assets/lawyer-meeting.png";
 import portfolio4 from "@/assets/portfolio-4.jpg";
@@ -15,7 +15,7 @@ import portfolio6 from "@/assets/office.png";
 type Category = "all" | "ecommerce" | "landing" | "webapps";
 
 const projects = [
-  { id: 1, cat: "ecommerce" as const, img: portfolio1, url: "" },
+  { id: 1, cat: "landing" as const, img: portfolio1, url: "https://agamgavriel.dot-page-studio.workers.dev/" },
   { id: 2, cat: "landing" as const, img: portfolio2, url: "https://yaelmoyal.page.gd/wp/" },
   { id: 3, cat: "landing" as const, img: portfolio3, url: "https://dotpagestudio.wixstudio.com/gal-law" },
   { id: 4, cat: "ecommerce" as const, img: portfolio4, url: "" },

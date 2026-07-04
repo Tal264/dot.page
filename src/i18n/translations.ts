@@ -71,8 +71,9 @@ export const translations: Record<Language, Record<string, string>> = {
     "portfolio.viewProject": "View Project",
 
      // ✅ FIXED PORTFOLIO PROJECT TEXTS
-    "portfolio.projects.1.title": "LuxeShop",
-    "portfolio.projects.1.desc": "Premium fashion e-commerce",
+  
+    "portfolio.projects.1.title": "Bridal Beauty",
+    "portfolio.projects.1.desc": "Luxury hair and makeup styling for events and brides",
 
     "portfolio.projects.2.title": "Clinical Dietitian & Fitness Coach",
     "portfolio.projects.2.desc": "Healthy lifestyle landing page",
@@ -134,7 +135,8 @@ export const translations: Record<Language, Record<string, string>> = {
     "pricing.ent.f5": "Priority 24/7 support",
     "pricing.ent.f6": "Performance optimization",
     "pricing.ent.f7": "Advanced SEO optimization",
-    "pricing.ent.f8": "10 revision rounds",
+    "pricing.ent.f8": "Google Analytics integration",
+    "pricing.ent.f9": "10 revision rounds",
 
     // Contact
     "contact.tag": "Get In Touch",
@@ -260,8 +262,10 @@ export const translations: Record<Language, Record<string, string>> = {
     "portfolio.viewProject": "צפה בפרויקט",
 
      // ✅ FIXED PORTFOLIO PROJECT TEXTS (HEBREW)
-    "portfolio.projects.1.title": "לוקס שופ",
-    "portfolio.projects.1.desc": "חנות אופנה יוקרתית אונליין",
+    
+  "portfolio.projects.1.title": "איפור ושיער ערב וכלות",
+  "portfolio.projects.1.desc": "מראה טבעי, זוהר ומותאם אישית ליום המיוחד שלך",
+
 
     "portfolio.projects.2.title": "דיאטנית קלינית ומאמנת כושר",
     "portfolio.projects.2.desc": "דף נחיתה לאורח חיים בריא",

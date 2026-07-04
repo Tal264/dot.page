@@ -23,7 +23,7 @@ const plans = [
   {
     nameKey: "pricing.enterprise",
     price: "₪9,999",
-    features: ["pricing.ent.f1", "pricing.ent.f2", "pricing.ent.f3", "pricing.ent.f4", "pricing.ent.f5", "pricing.ent.f6", "pricing.ent.f7", "pricing.ent.f8"],
+    features: ["pricing.ent.f1", "pricing.ent.f2", "pricing.ent.f3", "pricing.ent.f4", "pricing.ent.f5", "pricing.ent.f6", "pricing.ent.f7", "pricing.ent.f8", "pricing.ent.f9"],
     ctaKey: "pricing.ctaEnterprise",
     popular: false,
   },
